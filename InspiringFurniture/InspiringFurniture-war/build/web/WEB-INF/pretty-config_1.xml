@@ -1,0 +1,211 @@
+<pretty-config xmlns="http://ocpsoft.org/schema/rewrite-config-prettyfaces" 
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+               xsi:schemaLocation="http://ocpsoft.org/schema/rewrite-config-prettyfaces
+                                   http://ocpsoft.org/xml/ns/prettyfaces/rewrite-config-prettyfaces.xsd">
+                                  
+    <!--Client-->
+    <url-mapping id="about_us">
+        <pattern value="/About_Us" />
+        <view-id value="/faces/Client/about_us.xhtml" />
+    </url-mapping>
+    <url-mapping id="billing_details">
+        <pattern value="/Billing-Details" />
+        <view-id value="/faces/Client/billing_details.xhtml" />
+    </url-mapping>
+    <url-mapping id="checkout_billing">
+        <pattern value="/Checkout-Billing" />
+        <view-id value="/faces/Client/checkout_billing.xhtml" />
+    </url-mapping>
+    <url-mapping id="checkout_info">
+        <pattern value="/Checkout-Info" />
+        <view-id value="/faces/Client/checkout_info.xhtml" />
+    </url-mapping>
+    <url-mapping id="contact_us">
+        <pattern value="/Contact_Us" />
+        <view-id value="/faces/Client/contact_us.xhtml" />
+    </url-mapping>
+    <url-mapping id="delivery">
+        <pattern value="/Delivery" />
+        <view-id value="/faces/Client/delivery.xhtml" />
+    </url-mapping>
+    <url-mapping id="faq">
+        <pattern value="/FAQs" />
+        <view-id value="/faces/Client/faq.xhtml" />
+    </url-mapping>
+    <url-mapping id="feedback">
+        <pattern value="/Feedback" />
+        <view-id value="/faces/Client/feedback.xhtml" />
+    </url-mapping>
+    <url-mapping id="grid">
+        <pattern value="/Grid-Products" />
+        <view-id value="/faces/Client/grid.xhtml" />
+    </url-mapping>
+    <url-mapping id="index">
+        <pattern value="/Home" />
+        <view-id value="/faces/Client/index.xhtml" />
+    </url-mapping>
+    <url-mapping id="list">
+        <pattern value="/List-Products" />
+        <view-id value="/faces/Client/list.xhtml" />
+    </url-mapping>
+    <url-mapping id="login">
+        <pattern value="/Login" />
+        <view-id value="/faces/Client/login.xhtml" />
+    </url-mapping>
+    <url-mapping id="product_detail">
+        <pattern value="/Product-Details" />
+        <view-id value="/faces/Client/product_detail.xhtml" />
+    </url-mapping>
+    <url-mapping id="profile">
+        <pattern value="/Profile" />
+        <view-id value="/faces/Client/profile.xhtml" />
+    </url-mapping>
+    <url-mapping id="register">
+        <pattern value="/Register" />
+        <view-id value="/faces/Client/register.xhtml" />
+    </url-mapping>
+    <url-mapping id="reset_pass">
+        <pattern value="/Reset-Password" />
+        <view-id value="/faces/Client/reset_pass.xhtml" />
+    </url-mapping>
+    <url-mapping id="shopping_cart_grid">
+        <pattern value="/Shopping-Cart-grid" />
+        <view-id value="/faces/Client/shopping_cart_grid.xhtml" />
+    </url-mapping>
+    <url-mapping id="shopping_cart_list">
+        <pattern value="/Shopping-Cart-list" />
+        <view-id value="/faces/Client/shopping_cart_list.xhtml" />
+    </url-mapping>
+    <url-mapping id="thankyou">
+        <pattern value="/Thank-You" />
+        <view-id value="/faces/Client/thankyou.xhtml" />
+    </url-mapping>
+    <url-mapping id="wishlist">
+        <pattern value="/Wishlist" />
+        <view-id value="/faces/Client/wishlist.xhtml" />
+    </url-mapping>
+    <!--End Client-->
+        
+    <!--Admin-->
+    <url-mapping id="category-add">
+        <pattern value="/Admin/Category-add" />
+        <view-id value="/faces/Admin/category-add.xhtml" />
+    </url-mapping>
+    <url-mapping id="category-edit">
+        <pattern value="/Admin/Category-edit" />
+        <view-id value="/faces/Admin/category-edit.xhtml" />
+    </url-mapping>
+    <url-mapping id="category-list">
+        <pattern value="/Admin/Category-list" />
+        <view-id value="/faces/Admin/category-list.xhtml" />
+    </url-mapping>
+    <url-mapping id="contact-add">
+        <pattern value="/Admin/Contact-add" />
+        <view-id value="/faces/Admin/contact-add.xhtml" />
+    </url-mapping>
+    <url-mapping id="contact-edit">
+        <pattern value="/Admin/Contact-edit" />
+        <view-id value="/faces/Admin/contact-edit.xhtml" />
+    </url-mapping>
+    <url-mapping id="contact-list">
+        <pattern value="/Admin/Contact-list" />
+        <view-id value="/faces/Admin/contact-list.xhtml" />
+    </url-mapping>
+    <url-mapping id="feedback-add">
+        <pattern value="/Admin/Feedback-add" />
+        <view-id value="/faces/Admin/feedback-add.xhtml" />
+    </url-mapping>
+    <url-mapping id="feedback-edit">
+        <pattern value="/Admin/Feedback-edit" />
+        <view-id value="/faces/Admin/feedback-edit.xhtml" />
+    </url-mapping>
+    <url-mapping id="feedback-list">
+        <pattern value="/Admin/Feedback-list" />
+        <view-id value="/faces/Admin/feedback-list.xhtml" />
+    </url-mapping>
+    <url-mapping id="adindex">
+        <pattern value="/Admin/Dashboard" />
+        <view-id value="/faces/Admin/index.xhtml" />
+    </url-mapping>
+    <url-mapping id="adlogin">
+        <pattern value="/Admin/Login" />
+        <view-id value="/faces/Admin/login.xhtml" />
+    </url-mapping>
+    <url-mapping id="news-add">
+        <pattern value="/Admin/News-add" />
+        <view-id value="/faces/Admin/news-add.xhtml" />
+    </url-mapping>
+    <url-mapping id="news-edit">
+        <pattern value="/Admin/News-edit" />
+        <view-id value="/faces/Admin/news-edit.xhtml" />
+    </url-mapping>
+    <url-mapping id="news-list">
+        <pattern value="/Admin/News-list" />
+        <view-id value="/faces/Admin/news-list.xhtml" />
+    </url-mapping>
+    <url-mapping id="paymethod-add">
+        <pattern value="/Admin/Paymethod-add" />
+        <view-id value="/faces/Admin/paymethod-add.xhtml" />
+    </url-mapping>
+    <url-mapping id="paymethod-edit">
+        <pattern value="/Admin/Paymethod-edit" />
+        <view-id value="/faces/Admin/paymethod-edit.xhtml" />
+    </url-mapping>
+    <url-mapping id="paymethod-list">
+        <pattern value="/Admin/Paymethod-list" />
+        <view-id value="/faces/Admin/paymethod-list.xhtml" />
+    </url-mapping>
+    <url-mapping id="product-add">
+        <pattern value="/Admin/Product-add" />
+        <view-id value="/faces/Admin/product-add.xhtml" />
+    </url-mapping>
+    <url-mapping id="product-edit">
+        <pattern value="/Admin/Product-edit" />
+        <view-id value="/faces/Admin/product-edit.xhtml" />
+    </url-mapping>
+    <url-mapping id="product-list">
+        <pattern value="/Admin/Product-list" />
+        <view-id value="/Admin/faces/Admin/product-list.xhtml" />
+    </url-mapping>
+    <url-mapping id="productimages-add">
+        <pattern value="/Admin/ProductImages-add" />
+        <view-id value="/faces/Admin/productimages-add.xhtml" />
+    </url-mapping>
+    <url-mapping id="productimages-edit">
+        <pattern value="/Admin/ProductImages-edit" />
+        <view-id value="/faces/Admin/productimages-edit.xhtml" />
+    </url-mapping>
+    <url-mapping id="productimages-list">
+        <pattern value="/Admin/ProductImages-list" />
+        <view-id value="/faces/Admin/productimages-list.xhtml" />
+    </url-mapping>
+    <url-mapping id="promotion-add">
+        <pattern value="/Admin/Promotion-add" />
+        <view-id value="/faces/Admin/promotion-add.xhtml" />
+    </url-mapping>
+    <url-mapping id="promotion-edit">
+        <pattern value="/Admin/Promotion-edit" />
+        <view-id value="/faces/Admin/promotion-edit.xhtml" />
+    </url-mapping>
+    <url-mapping id="promotion-list">
+        <pattern value="/Admin/Promotion-list" />
+        <view-id value="/faces/Admin/promotion-list.xhtml" />
+    </url-mapping>
+    <url-mapping id="upload-file">
+        <pattern value="/Admin/Upload-file" />
+        <view-id value="/faces/Admin/upload-file.xhtml" />
+    </url-mapping>
+    <url-mapping id="user-add">
+        <pattern value="/Admin/User-add" />
+        <view-id value="/faces/Admin/user-add.xhtml" />
+    </url-mapping>
+    <url-mapping id="user-edit">
+        <pattern value="/Admin/User-edit" />
+        <view-id value="/faces/Admin/user-edit.xhtml" />
+    </url-mapping>
+    <url-mapping id="user-list">
+        <pattern value="/Admin/User-list" />
+        <view-id value="/faces/Admin/user-list.xhtml" />
+    </url-mapping>
+    <!--End Admin-->
+</pretty-config>

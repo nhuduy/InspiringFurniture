@@ -1,0 +1,48 @@
+<fieldset>
+                                            <table class="data-table cart-table" id="shopping-cart-table">
+                                                <thead>
+                                                    <tr class="first last">
+                                                        <th>#</th>
+                                                        <th>Created Date</th>
+                                                        <th>Delivery Date</th>
+                                                        <th class="a-right">Delivery Address</th>
+                                                        <th class="a-center">Total</th>
+                                                        <th class="a-center">Status</th>
+                                                        <th class="a-center">&nbsp;</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <c:forEach var="tran" items="#{transactionsController.listByUserId()}">
+                                                        <tr class="first odd">
+                                                            <td class="a-center">
+                                                                #{tran.tranId}
+                                                            </td>
+                                                            <td class="a-center">
+                                                                <h:outputText value="#{tran.tranCreatedDate}">
+                                                                    <f:convertDateTime type="datetime" pattern="dd-MM-yyyy" timeZone="Asia/Ho_Chi_Minh"/>
+                                                                </h:outputText>
+                                                            </td>
+                                                            <td class="a-center">
+                                                                <h:outputText value="#{tran.tranDeliveryDate}">
+                                                                    <f:convertDateTime type="datetime" pattern="dd-MM-yyyy" timeZone="Asia/Ho_Chi_Minh"/>
+                                                                </h:outputText>
+                                                            </td>
+                                                            <td class="a-center">
+                                                                #{tran.tranDeliveryAddress}
+                                                            </td>
+                                                            <td class="a-right"><span class="cart-price"> <span
+                                                                        class="price">$#{tran.tranTotal}</span> </span></td>
+                                                            
+                                                            <td class="a-right movewishlist Prices" id="Prices">
+                                                                #{tran.tranStatus}
+                                                            </td>
+                                                            <td class="a-center last">
+                                                                <h:commandButton class="btn btn-success"
+                                                                                 value="View details" 
+                                                                                 action="#{transactionsController.view(tran)}" />
+                                                            </td>
+                                                        </tr>
+                                                    </c:forEach>                                                    
+                                                </tbody>
+                                            </table>
+                                        </fieldset>

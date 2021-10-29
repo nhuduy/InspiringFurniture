@@ -1,0 +1,490 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:body>
+
+        <ui:decorate template="./templates/clientTemplate.xhtml">
+            <ui:param name="active_home_menu" value="active"/>
+            <ui:param name="active_page_menu" value=""/>
+
+            <ui:define name="content">
+                <p:growl id="facesMessage"/>
+                <!-- Slider -->
+                
+                <div id="magik-slideshow" class="magik-slideshow">
+                    <div class="wow">
+                        <div id='rev_slider_4_wrapper' class='rev_slider_wrapper fullwidthbanner-container' >
+                            <div id='rev_slider_4' class='rev_slider fullwidthabanner'>
+                                <ul>
+                                    <c:forEach var="i" items="#{newsController.listAll()}">
+                                        <c:if test="#{i.newsStatus == true}">
+                                            <li data-transition='random' data-slotamount='7' data-masterspeed='1000' data-thumb='resources/client/asset/images/slider_img_1.html'>
+                                                <h:graphicImage name="client/products-images/news/#{i.newsImage}"/>
+                                                <div    class='tp-caption ExtraLargeTitle sft  tp-resizeme ' data-x='15'  data-y='80'  data-endspeed='500'  data-speed='500' data-start='1100' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:2; white-space:nowrap;'>Welcome to our</div>
+                                                <div    class='tp-caption LargeTitle sfl  tp-resizeme ' data-x='15'  data-y='135'  data-endspeed='500'  data-speed='500' data-start='1300' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:3; white-space:nowrap;'>
+                                                    <span> #{i.newsTitle} </span>
+                                                </div>
+                                                <div    class='tp-caption sfb  tp-resizeme ' data-x='15'  data-y='360'  data-endspeed='500'  data-speed='500' data-start='1500' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:4; white-space:nowrap;'>
+                                                    <!--<a href='#' class="view-more">View More</a>--> 
+                                                    <h:link outcome="contact_us?faces-redirect=true" class="buy-btn">Contact us</h:link>
+                                                </div>
+                                                <div    class='tp-caption Title sft  tp-resizeme ' data-x='15'  data-y='230'  data-endspeed='500'  data-speed='500' data-start='1500' data-easing='Power2.easeInOut' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:4; white-space:nowrap;font-size:25px'>
+                                                    #{i.newsIntro}
+                                                </div>
+                                                <div    class='tp-caption Title sft  tp-resizeme ' data-x='15'  data-y='400'  data-endspeed='500'  data-speed='500' data-start='1500' data-easing='Power2.easeInOut' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:4; white-space:wrap;font-size:20px'>
+                                                    #{i.newsContent}
+                                                    <br></br>
+                                                    <h:link outcome="contact_us?faces-redirect=true"><span style="z-index:4; color: white; white-space:wrap; font-size:20px"><i>Contact us for more!</i></span></h:link>
+                                                </div>
+                                            </li>
+                                        </c:if>
+                                    </c:forEach>
+                                </ul>
+                                <div class="tp-bannertimer"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Slider -->  
+
+                <!-- Header Service -->
+                <div class="header-service">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="content">
+                                    <div class="icon-truck">&nbsp;</div>
+                                    <span><strong>FREE SHIPPING</strong> order over $99</span></div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="content">
+                                    <div class="icon-support">&nbsp;</div>
+                                    <span><strong>Customer Support</strong> Service</span></div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="content">
+                                    <div class="icon-money">&nbsp;</div>
+                                    <span><strong>3 days Money Back</strong> Guarantee</span></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- End Header Service --> 
+
+                <!-- Offer Banner Section -->
+                <!--                <div class="offer-banner-section">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-4 col-xs-12 col-md-4 col-sm-4 wow"><a href="#"><h:graphicImage alt="offer banner1" name="/client/asset/images/promo-banner1.jpg"/></a></div>
+                                            <div class="col-lg-4 col-xs-12 col-md-4 col-sm-4 wow"><a href="#"><h:graphicImage alt="offer banner1" name="/client/asset/images/promo-banner2.jpg"/></a></div>
+                                            <div class="col-lg-4 col-xs-12 col-md-4 col-sm-4 wow"><a href="#"><h:graphicImage alt="offer banner1" name="/client/asset/images/promo-banner3.jpg"/></a></div>
+                                        </div>
+                                    </div>
+                                </div>-->
+                <!-- End Offer Banner Section --> 
+
+                <!-- Main Container -->
+                <h:form>
+                <section class="main-container col1-layout home-content-container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="std">
+                                <!-- Sofas -->
+                                <div class="col-lg-12 col-xs-12 col-sm-12 best-seller-pro wow">
+                                    <div class="slider-items-products">
+                                        <div class="new_title center">
+                                            <h2>Sofas</h2>
+                                        </div>
+                                        <div id="best-seller-slider" class="product-flexslider hidden-buttons">
+                                            <div class="slider-items slider-width-col4">                                           
+                                                <!-- Item 1 -->
+                                                <c:forEach var="sofa" items="#{productController.listBySofa()}">
+                                                    <div class="item">
+                                                        <div class="col-item">
+                                                            <c:if test="#{sofa.prodQuantity > 0}" >
+                                                                <div class="new-label new-top-right">Sale</div>
+                                                            </c:if>
+                                                            <c:if test="#{sofa.prodQuantity == 0}" >
+                                                                <div class="sale-label sale-top-left">Out of stock</div>
+                                                            </c:if>
+                                                            <div class="images-container">
+                                                                <h:commandLink class="product-image" title="#{sofa.prodName}" action="#{productController.productDetail(sofa)}">
+                                                                    <h:graphicImage name="client/products-images/#{productImageController.getImageByProdId(sofa.prodId)}" class="img-responsive" alt="a"/> 
+                                                                </h:commandLink>
+                                                                <div class="actions">
+                                                                    <div class="actions-inner">
+                                                                        <c:if test="#{sofa.prodQuantity > 0}" >
+                                                                            <!--<button type="button" title="Add to Cart" class="button btn-cart"><span>Add to Cart</span></button>-->
+                                                                            <h:commandLink class="btn-cart" action="shopping_cart_grid?faces-redirect=true">
+                                                                                <span>Add to Cart</span> 
+                                                                                <f:ajax listener="#{cartController.addItemToCart(sofa.prodId, sofa.prodName, sofa.prodPrice)}" />
+                                                                            </h:commandLink>
+                                                                        </c:if>
+                                                                        <c:if test="#{cus_loged != null}">
+                                                                        <!--<button type="button" title="Add to Wishlist" class="button btn-cart"><span>Add to Wishlist</span></button>-->
+                                                                        <h:commandLink title="Add to Wishlist" class="btn-cart"
+                                                                                       action="wishlist?faces-redirect=true">
+                                                                            <span>Add to Wishlist</span>
+                                                                            <f:ajax listener="#{wishlistController.addItemWishList(sofa.prodId, sofa.prodName, sofa.prodPrice)}" />
+                                                                        </h:commandLink>
+                                                                        </c:if>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="qv-button-container">
+                                                                    <h:commandLink title="View details" action="#{productController.productDetail(sofa)}">
+                                                                        <span><span>View details</span></span>
+                                                                    </h:commandLink> 
+                                                                </div>
+                                                            </div>
+                                                            <div class="info">
+                                                                <div class="info-inner">
+                                                                    <div class="item-title"> <a title=" #{sofa.prodName}" href="#"> #{sofa.prodName} </a> </div>
+                                                                    <!--item-title-->
+                                                                    <div class="item-content">
+                                                                        <div class="ratings">
+                                                                            <div class="rating-box">
+                                                                                <div style="width:60%" class="rating"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="price-box">
+                                                                            <p class="special-price"> <span class="price"> $#{sofa.prodPrice} </span> </p>
+                                                                            <p class="old-price"> <span class="price-sep">-</span> <span class="price"> $#{sofa.prodOldprice} </span> </p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!--item-content--> 
+                                                                </div>
+                                                                <!--info-inner--> 
+
+                                                                <!--actions-->
+                                                                <div class="clearfix"> </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </c:forEach>
+                                            </div>
+                                        </div>
+                                    </div>  
+                                </div>
+                                <!-- End Sofas -->
+
+                                <!-- Chairs -->
+                                <div class="col-lg-12 col-xs-12 col-sm-12 latest-product wow">
+                                    <div class="slider-items-products">
+                                        <div class="new_title center">
+                                            <h2>Chairs</h2>
+                                        </div>
+                                        <div id="best-seller-slider" class="product-flexslider hidden-buttons">
+                                            <div class="slider-items slider-width-col4"> 
+
+                                                <!-- Item 1 -->
+                                                <c:forEach var="chair" items="#{productController.listByChair()}" >
+                                                    <div class="item">
+                                                        <div class="col-item">
+                                                            <c:if test="#{chair.prodQuantity > 0}" >
+                                                                <div class="new-label new-top-right">Sale</div>
+                                                            </c:if>
+                                                            <c:if test="#{chair.prodQuantity == 0}" >
+                                                                <div class="sale-label sale-top-left">Out of stock</div>
+                                                            </c:if>
+                                                            <div class="images-container">
+                                                                <h:commandLink class="product-image" title="#{chair.prodName}" action="#{productController.productDetail(chair)}">
+                                                                    <h:graphicImage name="client/products-images/#{productImageController.getImageByProdId(chair.prodId)}" class="img-responsive" alt="a"/> 
+                                                                </h:commandLink>
+                                                                <div class="actions">
+                                                                    <div class="actions-inner">
+                                                                        <c:if test="#{chair.prodQuantity > 0}" >
+                                                                            <!--<button type="button" title="Add to Cart" class="button btn-cart"><span>Add to Cart</span></button>-->
+                                                                            <h:commandLink class="btn-cart" action="shopping_cart_grid?faces-redirect=true">
+                                                                                <span>Add to Cart</span> 
+                                                                                <f:ajax listener="#{cartController.addItemToCart(chair.prodId, chair.prodName, chair.prodPrice)}" />
+                                                                            </h:commandLink>
+                                                                        </c:if>
+                                                                        <c:if test="#{cus_loged != null}">
+                                                                        <!--<button type="button" title="Add to Wishlist" class="button btn-cart"><span>Add to Wishlist</span></button>-->
+                                                                        <h:commandLink title="Add to Wishlist" class="btn-cart"
+                                                                                       action="wishlist?faces-redirect=true">
+                                                                            <span>Add to Wishlist</span>
+                                                                            <f:ajax listener="#{wishlistController.addItemWishList(chair.prodId, chair.prodName, chair.prodPrice)}" />
+                                                                        </h:commandLink>
+                                                                        </c:if>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="qv-button-container">
+                                                                    <h:commandLink title="View details" action="#{productController.productDetail(chair)}">
+                                                                        <span><span>View details</span></span>
+                                                                    </h:commandLink> 
+                                                                </div>
+                                                            </div>
+                                                            <div class="info">
+                                                                <div class="info-inner">
+                                                                    <div class="item-title"> <a title=" #{chair.prodName}" href="#"> #{chair.prodName} </a> </div>
+                                                                    <!--item-title-->
+                                                                    <div class="item-content">
+                                                                        <div class="ratings">
+                                                                            <div class="rating-box">
+                                                                                <div style="width:60%" class="rating"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="price-box">
+                                                                            <p class="special-price"> <span class="price"> $#{chair.prodPrice} </span> </p>
+                                                                            <p class="old-price"> <span class="price-sep">-</span> <span class="price"> $#{chair.prodOldprice} </span> </p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!--item-content--> 
+                                                                </div>
+                                                                <!--info-inner--> 
+
+                                                                <!--actions-->
+                                                                <div class="clearfix"> </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </c:forEach>
+                                                <!-- End Item 1 --> 
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Chairs -->
+
+                                <!-- Tables -->
+                                <div class="col-lg-12 col-xs-12 col-sm-12 latest-product wow">
+                                    <div class="slider-items-products">
+                                        <div class="new_title center">
+                                            <h2>Tables</h2>
+                                        </div>
+                                        <div id="best-seller-slider" class="product-flexslider hidden-buttons">
+                                            <div class="slider-items slider-width-col4"> 
+
+                                                <!-- Item 1 -->
+                                                <c:forEach var="table" items="#{productController.listByTable()}" >
+                                                    <div class="item">
+                                                        <div class="col-item">
+                                                            <c:if test="#{table.prodQuantity > 0}" >
+                                                                <div class="new-label new-top-right">Sale</div>
+                                                            </c:if>
+                                                            <c:if test="#{table.prodQuantity == 0}" >
+                                                                <div class="sale-label sale-top-left">Out of stock</div>
+                                                            </c:if>
+                                                            <div class="images-container">
+                                                                <h:commandLink class="product-image" title="#{table.prodName}" action="#{productController.productDetail(table)}">
+                                                                    <h:graphicImage name="client/products-images/#{productImageController.getImageByProdId(table.prodId)}" class="img-responsive" alt="a"/> 
+                                                                </h:commandLink>
+                                                                <div class="actions">
+                                                                    <div class="actions-inner">
+                                                                        <c:if test="#{table.prodQuantity > 0}" >
+                                                                            <!--<button type="button" title="Add to Cart" class="button btn-cart"><span>Add to Cart</span></button>-->
+                                                                            <h:commandLink class="btn-cart" action="shopping_cart_grid?faces-redirect=true">
+                                                                                <span>Add to Cart</span> 
+                                                                                <f:ajax listener="#{cartController.addItemToCart(table.prodId, table.prodName, table.prodPrice)}" />
+                                                                            </h:commandLink>
+                                                                        </c:if>
+                                                                        
+                                                                        <c:if test="#{cus_loged != null}">
+                                                                        <!--<button type="button" title="Add to Wishlist" class="button btn-cart"><span>Add to Wishlist</span></button>-->
+                                                                        <h:commandLink title="Add to Wishlist" class="btn-cart"
+                                                                                       action="wishlist?faces-redirect=true">
+                                                                            <span>Add to Wishlist</span>
+                                                                            <f:ajax listener="#{wishlistController.addItemWishList(table.prodId, table.prodName, table.prodPrice)}" />
+                                                                        </h:commandLink>
+                                                                        </c:if>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="qv-button-container">
+                                                                    <h:commandLink title="View details" action="#{productController.productDetail(table)}">
+                                                                        <span><span>View details</span></span>
+                                                                    </h:commandLink> 
+                                                                </div>
+                                                            </div>
+                                                            <div class="info">
+                                                                <div class="info-inner">
+                                                                    <div class="item-title"> <a title=" #{table.prodName}" href="#"> #{table.prodName} </a> </div>
+                                                                    <!--item-title-->
+                                                                    <div class="item-content">
+                                                                        <div class="ratings">
+                                                                            <div class="rating-box">
+                                                                                <div style="width:60%" class="rating"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="price-box">
+                                                                            <p class="special-price"> <span class="price"> $#{table.prodPrice} </span> </p>
+                                                                            <p class="old-price"> <span class="price-sep">-</span> <span class="price"> $#{table.prodOldprice}</span> </p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!--item-content--> 
+                                                                </div>
+                                                                <!--info-inner--> 
+
+                                                                <!--actions-->
+                                                                <div class="clearfix"> </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </c:forEach>
+                                                <!-- End Item 1 --> 
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- End Tables -->
+
+                                <!-- Decorations -->
+                                <div class="col-lg-12 col-xs-12 col-sm-12 latest-product wow">
+                                    <div class="slider-items-products">
+                                        <div class="new_title center">
+                                            <h2>Decorations</h2>
+                                        </div>
+                                        <div id="best-seller-slider" class="product-flexslider hidden-buttons">
+                                            <div class="slider-items slider-width-col4"> 
+
+                                                <!-- Item 1 -->
+                                                <c:forEach var="decor" items="#{productController.listByDecor()}" >
+                                                    <div class="item">
+                                                        <div class="col-item">
+                                                            <c:if test="#{decor.prodQuantity > 0}" >
+                                                                <div class="new-label new-top-right">Sale</div>
+                                                            </c:if>
+                                                            <c:if test="#{decor.prodQuantity == 0}" >
+                                                                <div class="sale-label sale-top-left">Out of stock</div>
+                                                            </c:if>
+                                                            <div class="images-container">
+                                                                <h:commandLink class="product-image" title="#{decor.prodName}" action="#{productController.productDetail(decor)}">
+                                                                    <h:graphicImage name="client/products-images/#{productImageController.getImageByProdId(decor.prodId)}" class="img-responsive" alt="a"/> 
+                                                                </h:commandLink>
+                                                                <div class="actions">
+                                                                    <div class="actions-inner">
+                                                                        <c:if test="#{decor.prodQuantity > 0}" >
+                                                                            <!--<button type="button" title="Add to Cart" class="button btn-cart"><span>Add to Cart</span></button>-->
+                                                                            <h:commandLink class="btn-cart" action="shopping_cart_grid?faces-redirect=true">
+                                                                                <span>Add to Cart</span> 
+                                                                                <f:ajax listener="#{cartController.addItemToCart(decor.prodId, decor.prodName, decor.prodPrice)}" />
+                                                                            </h:commandLink>
+                                                                        </c:if>
+                                                                        
+                                                                        
+                                                                        <c:if test="#{cus_loged != null}">
+                                                                        <!--<button type="button" title="Add to Wishlist" class="button btn-cart"><span>Add to Wishlist</span></button>-->
+                                                                        <h:commandLink title="Add to Wishlist" class="btn-cart"
+                                                                                       action="wishlist?faces-redirect=true">
+                                                                            <span>Add to Wishlist</span>
+                                                                            <f:ajax listener="#{wishlistController.addItemWishList(decor.prodId, decor.prodName, decor.prodPrice)}" />
+                                                                        </h:commandLink>
+                                                                        </c:if>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="qv-button-container">
+                                                                    <h:commandLink title="View details" action="#{productController.productDetail(decor)}">
+                                                                        <span><span>View details</span></span>
+                                                                    </h:commandLink> 
+                                                                </div>
+                                                            </div>
+                                                            <div class="info">
+                                                                <div class="info-inner">
+                                                                    <div class="item-title"> <a title=" #{decor.prodName}" href="#"> #{decor.prodName} </a> </div>
+                                                                    <!--item-title-->
+                                                                    <div class="item-content">
+                                                                        <div class="ratings">
+                                                                            <div class="rating-box">
+                                                                                <div style="width:60%" class="rating"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="price-box">
+                                                                            <p class="special-price"> <span class="price"> $#{decor.prodPrice} </span> </p>
+                                                                            <p class="old-price"> <span class="price-sep">-</span> <span class="price"> $#{decor.prodOldprice}</span> </p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!--item-content--> 
+                                                                </div>
+                                                                <!--info-inner--> 
+
+                                                                <!--actions-->
+                                                                <div class="clearfix"> </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </c:forEach>
+                                                <!-- End Item 1 --> 
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- End Decorations -->
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                </h:form>
+                <!-- End Main Container --> 
+
+                <!-- Middle Slider -->
+                <section class="middle-slider container">
+                    <div class="row">
+                        <div class="col-lg-12 custom-slider">
+                            <div>
+                                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel"> 
+                                    <!-- Indicators -->
+                                    <ol class="carousel-indicators">
+                                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                                    </ol>
+
+                                    <!-- Wrapper for slides -->
+                                    <div class="carousel-inner" role="listbox">
+                                        <div class="item active"> <h:graphicImage name="/client/asset/images/slide1.jpg" alt="slide1"/>
+                                            <div class="carousel-caption">
+                                                <h3><a href="#" title=" Sample Product">Hot collection</a></h3>
+                                                <p>The best room tour setup ideas!</p>
+                                            </div>
+                                        </div>
+                                        <div class="item"> <h:graphicImage name="/client/asset/images/slide2.jpg" alt="slide2"/>
+                                            <div class="carousel-caption">
+                                                <h3><a href="#" title=" Sample Product">Summer collection</a></h3>
+                                                <p>Summer is coming. Get your living room freshen up!</p>
+                                            </div>
+                                        </div>
+                                        <div class="item"> <h:graphicImage name="/client/asset/images/slide3.jpg" alt="slide3"/>
+                                            <div class="carousel-caption">
+                                                <h3><a href="#" title=" Sample Product">New Arrivals</a></h3>
+                                                <p>Modern-looking furniture helps brighten your day!</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Controls --> 
+                                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> <span class="sr-only">Next</span> </a> </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </section>
+                <!-- End Middle Slider --> 
+
+                <!-- Promotion Banner Section -->
+                <div class="promo-banner-section container wow">
+                    <div class="container">
+                        <div class="row"> <h:graphicImage alt="promo-banner3" name="/client/asset/images/bottom-banner1.jpg"/></div>
+                    </div>
+                </div>
+                <!-- End Promotion Banner Section --> 
+            </ui:define>
+        </ui:decorate>
+
+    </h:body>
+</html>

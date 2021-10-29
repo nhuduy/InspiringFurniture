@@ -1,0 +1,219 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <![endif]-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="description" content=""/>
+        <meta name="author" content=""/>
+        <!-- Favicons Icon -->
+        <link rel="icon" href="http://demo.magikthemes.com/skin/frontend/base/default/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="http://demo.magikthemes.com/skin/frontend/base/default/favicon.ico" type="image/x-icon" />
+        <!-- Mobile Specific -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+        <!-- CSS Style -->
+
+        <h:outputStylesheet name="client/asset/css/bootstrap.min.css" />
+        <h:outputStylesheet name="client/asset/css/style.css" />
+        <h:outputStylesheet name="client/asset/css/revslider.css" />
+        <h:outputStylesheet name="client/asset/css/owl.carousel.css" />
+        <h:outputStylesheet name="client/asset/css/owl.theme.css" />
+        <h:outputStylesheet name="client/asset/css/font-awesome.css"/>
+        <!-- Google Fonts -->
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'/>
+
+        <title>Inspiring Furniture</title>
+
+        <!--        <script type='text/javascript'>
+                    $(function ()
+                    {
+                        var totalprices = 0;
+                        $("[id='Price']").each(function ()
+                        {
+                            totalprices = totalprices + parseFloat($(this).html());
+                        });
+                        $("[id='TotalPrices']").html(totalprices.toString());
+        
+                    });
+                </script>-->
+    </h:head>
+
+    <h:body class="cms-index-index">
+        <div class="page">
+            <p:growl autoUpdate="true"/>
+
+            <ui:insert name="header">
+                <ui:include src="_header.xhtml"/>
+            </ui:insert>
+
+
+
+
+            <ui:insert name="content">
+
+                <h1> Content </h1>
+            </ui:insert>
+
+
+            <ui:insert name="footer">
+                <ui:include src="_footer.xhtml"/>
+            </ui:insert>
+
+            <!-- Social Media -->
+            <div class="social">
+                <ul>
+                    <li class="fb"><a href="#"></a></li>
+                    <li class="tw"><a href="#"></a></li>
+                    <!--<li class="googleplus"><a href="#"></a></li>-->
+                    <!--<li class="rss"><a href="#"></a></li>-->
+                    <li class="pintrest"><a href="#"></a></li>
+                    <li class=""><a href="#"></a></li>
+                    <!--<li class="linkedin"><a href="#"></a></li>-->
+                    <!--<li class="youtube"><a href="#"></a></li>-->
+                </ul>
+            </div>
+            <!-- End Social Media -->
+        </div>
+
+
+
+        <!-- JavaScript --> 
+        <h:outputScript name="client/asset/js/jquery.min.js" />
+        <h:outputScript name="client/asset/js/bootstrap.min.js" />
+        <h:outputScript name="client/asset/js/common.js" />
+        <h:outputScript name="client/asset/js/jquery.jcarousel.min.js" />
+        <h:outputScript name="client/asset/js/cloudzoom.js" />
+        <h:outputScript name="client/asset/js/revslider.js" />
+        <h:outputScript name="client/asset/js/owl.carousel.min.js" />
+
+<!--        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+        <link rel="stylesheet" href="/resources/demos/style.css"/>
+        <h:outputScript name="https://code.jquery.com/jquery-1.12.4.js"/>
+        <h:outputScript name="https://code.jquery.com/ui/1.12.1/jquery-ui.js"/>-->
+        
+
+        <script type='text/javascript'>
+            jQuery(document).ready(function () {
+                jQuery('#rev_slider_4').show().revolution({
+                    dottedOverlay: 'none',
+                    delay: 5000,
+                    startwidth: 1170,
+                    startheight: 580,
+
+                    hideThumbs: 200,
+                    thumbWidth: 200,
+                    thumbHeight: 50,
+                    thumbAmount: 2,
+
+                    navigationType: 'thumb',
+                    navigationArrows: 'solo',
+                    navigationStyle: 'round',
+
+                    touchenabled: 'on',
+                    onHoverStop: 'on',
+
+                    swipe_velocity: 0.7,
+                    swipe_min_touches: 1,
+                    swipe_max_touches: 1,
+                    drag_block_vertical: false,
+
+                    spinner: 'spinner0',
+                    keyboardNavigation: 'off',
+
+                    navigationHAlign: 'center',
+                    navigationVAlign: 'bottom',
+                    navigationHOffset: 0,
+                    navigationVOffset: 20,
+
+                    soloArrowLeftHalign: 'left',
+                    soloArrowLeftValign: 'center',
+                    soloArrowLeftHOffset: 20,
+                    soloArrowLeftVOffset: 0,
+
+                    soloArrowRightHalign: 'right',
+                    soloArrowRightValign: 'center',
+                    soloArrowRightHOffset: 20,
+                    soloArrowRightVOffset: 0,
+
+                    shadow: 0,
+                    fullWidth: 'on',
+                    fullScreen: 'off',
+
+                    stopLoop: 'off',
+                    stopAfterLoops: -1,
+                    stopAtSlide: -1,
+
+                    shuffle: 'off',
+
+                    autoHeight: 'off',
+                    forceFullWidth: 'on',
+                    fullScreenAlignForce: 'off',
+                    minFullScreenHeight: 0,
+                    hideNavDelayOnMobile: 1500,
+
+                    hideThumbsOnMobile: 'off',
+                    hideBulletsOnMobile: 'off',
+                    hideArrowsOnMobile: 'off',
+                    hideThumbsUnderResolution: 0,
+
+                    hideSliderAtLimit: 0,
+                    hideCaptionAtLimit: 0,
+                    hideAllCaptionAtLilmit: 0,
+                    startWithSlide: 0,
+                    fullScreenOffsetContainer: ''
+                });
+
+                //                $(function ()
+                //                {
+                //                    var totalprices = 0;
+                //                    $("[id*=Price]").each(function ()
+                //                    {
+                //                        totalprices = totalprices + parseFloat($(this).text());
+                //                    });
+                //                    $("[id*=TotalPrices]").html(totalprices.toString());
+                //
+                //                });
+
+                //                $('td').each(function ()
+                //                {
+                //                    var totalprices = 0;
+                //                    $(this).find('.Price').each(function ()
+                //                    {
+                //                       var prices = $(this).text();
+                //                       if(prices.length!==0)
+                //                       {
+                //                           totalprices+=parseFloat(prices);
+                //                       }
+                //                    });
+                //                    $(this).find('#TotalPrices').html(totalprices.toString());
+                //                });
+
+//                $(function () {
+//                    $(".datepicker").datepicker();
+//                });
+//                jQuery(".datepicker").datepicker({
+//                    showOn: "button",
+//                    buttonImage: "images/calendar.gif",
+//                    buttonImageOnly: true});
+
+            });
+            
+            
+            function hidedivmessage() {
+                document.getElementById("Message").style.display = "none";
+            }
+            setTimeout("hidedivmessage()", 3000);
+        </script>
+        <!-- End JavaScript -->
+    </h:body>
+
+</html>

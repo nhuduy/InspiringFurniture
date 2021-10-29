@@ -1,0 +1,432 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:p="http://primefaces.org/ui">
+    <!-- Header -->
+
+    <header class="header-container">
+        <div class="header-top">
+            <div class="container">
+                <div class="row"> 
+                    <h:form>
+                        <div class="col-xs-6">
+
+
+                            <!-- Welcome message -->
+
+                            <c:if test="#{cus_loged != null}">
+                                Welcome back, #{cus_loged.userFullname} &nbsp; &nbsp;
+                                <div class="dropdown block-language-wrapper"> <a role="button" data-toggle="dropdown" data-target="#" class="block-language dropdown-toggle" href="#">  #{cus_loged.userEmail} <span class="caret"></span> </a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li role="presentation">
+                                            <h:commandLink role="menuitem" tabindex="-1" action="#{userController.updateProfile(cus_loged)}" styleClass="active">
+                                                <h:graphicImage width="19" name="/client/asset/images/profile_icon.jpg" alt="My Profiles"/>
+                                                <span>My Profiles</span>
+                                            </h:commandLink>
+                                        </li>
+                                        <li role="presentation">
+                                            <h:commandLink role="menuitem" tabindex="-1" action="wishlist?faces-redirect=true" styleClass="active">
+                                                <h:graphicImage width="19" name="/client/asset/images/wishlist_icon.png" alt="My Wishlist"/>
+                                                <span>My Wishlist</span>
+                                            </h:commandLink>
+                                        </li>
+                                        <li role="presentation">
+                                            <h:commandLink role="menuitem" tabindex="-1" action="checkout_info?faces-redirect=true" styleClass="active">
+                                                <h:graphicImage width="19" name="/client/asset/images/order_icon.png" alt="My Ordering list"/>
+                                                <span>My Ordering list</span>
+                                            </h:commandLink>
+                                        </li>
+                                        <li role="presentation">
+                                            <h:commandLink role="menuitem" tabindex="-1" action="checkout_billing?faces-redirect=true" styleClass="active">
+                                                <h:graphicImage width="19" name="/client/asset/images/bill.png" alt="Billing information"/>
+                                                <span>Billing information</span>
+                                            </h:commandLink>
+                                        </li>
+                                        <li role="presentation">
+                                            <h:commandLink role="menuitem" tabindex="-1" action="#{userController.logoutCus()}" styleClass="active">
+                                                <h:graphicImage width="19" name="/client/asset/images/logout.jpg" alt="Logout"/>
+                                                <span>Logout</span>
+                                            </h:commandLink>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </c:if>
+                            <c:if test="#{cus_loged == null}">
+                                &nbsp;&nbsp; <h:link outcome="login?faces-redirect=true" styleClass="active"><span>Login</span></h:link>
+                                &nbsp;&nbsp; <h:link outcome="register?faces-redirect=true" styleClass="active"><span>New Member</span></h:link>
+                            </c:if>
+
+                            <!-- End Welcome message -->   
+                        </div>
+
+                        <!-- Header Top Links -->
+
+
+                        <div class="col-xs-6"> 
+                            <div class="toplinks">
+                                <div class="links">
+                                    <div class="phone hidden-xs">1900 1234</div>
+
+                                    <!-- Header Currency -->
+                                    <div class="dropdown block-currency-wrapper"> <a role="button" data-toggle="dropdown" data-target="#" class="block-currency dropdown-toggle" href="#"> USD <span class="caret"></span></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"> $ - Dollar </a></li>
+                                            <!-- 
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"> £ - Pound </a></li>
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"> € - Euro </a></li>
+                                            -->
+                                        </ul>
+                                    </div>                            
+                                    <!-- Header Language -->    
+                                    <div class="dropdown block-language-wrapper"> <a role="button" data-toggle="dropdown" data-target="#" class="block-language dropdown-toggle" href="#"> <h:graphicImage name="/client/asset/images/english.png" alt="language"/> English <span class="caret"></span> </a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><h:graphicImage name="/client/asset/images/english.png" alt="language"/> English </a></li>
+                                            <!-- 
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><h:graphicImage name="/client/asset/images/francais.png" alt="language"> French </a></li>
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><h:graphicImage name="/client/asset/images/german.png" alt="language"> German </a></li>
+                                            -->
+                                        </ul>
+                                    </div>
+                                    <!-- End Header Language --> 
+                                </div>
+                            </div> 
+                        </div>
+                    </h:form>
+                    <!-- End Header Top Links --> 
+                </div>
+            </div>
+        </div>
+
+        <!--Header Container-->
+        <div class="header container">
+            <div class="row">
+                <!-- Header Logo --> 
+                <div class="col-lg-2 col-sm-3 col-md-2 col-xs-12"> 
+                    <!--<a class="logo" title="Inspiring Furniture" href="Client/index.xhtml">-->
+                    <h:link class="logo" title="Inspiring Furniture" outcome="index.xhtml">
+                        <h:graphicImage alt="Inspiring Furniture" name="/client/asset/images/logo.png"/>
+                    </h:link>
+
+                    <!--</a>-->  
+                </div>
+                <!-- Top Cart -->
+                <c:if test="#{cus_loged != null}">
+
+                    <div class="col-lg-5 col-sm-5 col-md-6 col-xs-12">
+                        <h:form><div class="top-cart-contain">
+                                <div class="mini-cart">
+                                    <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"> 
+                                        <a href="#"> <i class="icon-cart"></i>
+                                            <div class="cart-box"><span class="title">My Cart</span>
+                                                <span id="wish-total"> #{cartController.cart.size()} </span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div>
+
+                                        <div class="top-cart-content arrow_box">
+                                            <div class="block-subtitle">Recently added item(s)</div>
+                                            <ul id="cart-sidebar" class="mini-products-list">
+                                                <c:forEach var="cart" items="#{cartController.cart}">
+                                                    <li class="item even"> <a class="product-image" href="#" title="#{cart['prodName']}" ><h:graphicImage name="client/products-images/#{productImageController.getImageByProdId(cart['prodId'])}" width="80"/></a>
+                                                        <div class="detail-item">
+                                                            <div class="product-details"> 
+                                                                <!--                                                            <a href="#" title="Remove This Item" onClick="" class="glyphicon glyphicon-remove">&nbsp;</a> 
+                                                                                                                            <a class="glyphicon glyphicon-pencil" title="Edit item" href="#">&nbsp;</a>-->
+                                                                <p class="product-name"> <a href="#" title="#{cart['prodName']}" >#{cart['prodName']} </a> </p>
+                                                            </div>
+                                                            <div class="product-details-bottom"> <span class="price">$#{cart['prodPrice']}</span> <span class="title-desc">Qty:</span> <strong>#{cart['quantity']}</strong> </div>
+                                                        </div>
+                                                    </li>
+                                                </c:forEach>
+
+                                            </ul>
+                                            <!--                                        <div class="top-subtotal">Subtotal: <span class="price">$420.00</span></div>-->
+                                            <div class="actions">
+                                                <!--<h:link outcome="login.xhtml" styleClass="active"><span>Login</span></h:link>-->
+
+
+                                                <!--                                                <h:link outcome="checkout_info?faces-redirect=true" styleClass="active" >
+                                                                                                    <button class="btn-checkout"><span>Checkout</span></button>
+                                                                                                    <h:commandButton class="btn-checkout" 
+                                                                                                                     value="ORDER" >
+                                                                                                        
+                                                                                                    </h:commandButton>
+                                                                                                </h:link>-->
+                                                <h:commandLink action="shopping_cart_grid?faces-redirect=true" styleClass="active" >
+                                                    <button class="view-cart"><span>View Cart</span></button>
+                                                </h:commandLink>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div id="ajaxconfig_info" style="display:none"> <a href="#/"></a>
+                                    <input value="" type="hidden"/>
+                                    <input id="enable_module" value="1" type="hidden"/>
+                                    <input class="effect_to_cart" value="1" type="hidden"/>
+                                    <input class="title_shopping_cart" value="Go to shopping cart" type="hidden"/>
+                                </div>
+
+                            </div></h:form>
+
+                        <!-- COUNT WISHLIST -->
+                        <div class="signup">
+                            <h:link outcome="wishlist">
+                                <div class="mini-cart">
+                                    <div class="basket dropdown-toggle">
+                                        <div class="cart-box">
+                                            <span id="cart-total"> #{wishlistController.wishCount()} </span>
+                                            <span class="title">Wishlist</span>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </h:link>
+                        </div>
+                        <!-- END COUNT WISHLIST-->
+
+                    </div>
+                </c:if>
+                <!-- End Top Cart -->
+                <!-- End Header Logo --> 
+
+                <!-- Search-col -->
+                <!--                <div class="col-lg-7 col-sm-5 col-md-6 col-xs-12"> 
+                                    <div class="search-box">
+                
+                                        <h:form id="search_mini_form">
+                                            <select name="category_id" class="cate-dropdown hidden-xs">
+                                                <option value="0">All Categories</option>
+                                                <c:forEach var="c" items="#{categoryController.listAll()}">
+                                                    <option value="#{c.cateId}">#{c.cateName}</option>
+                                                </c:forEach>
+                
+                                            </select>
+                                            <input type="text" placeholder="Search here..." value="" maxlength="70" class="" name="search" id="search"/>
+                                            <button id="submit-button" class="search-btn-bg"><span>Search</span></button>
+                                        </h:form>
+                                    </div>  
+                                </div>-->
+                <!-- End Search-col -->
+
+
+
+            </div>
+        </div>
+        <!--End Header Container-->
+
+    </header>
+    <!-- End Header -->
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="container">
+            <div class="nav-inner"> 
+
+                <!-- Mobile Menu -->
+                <div class="hidden-desktop" id="mobile-menu">
+                    <ul class="navmenu">
+                        <li>
+                            <!-- Icon-bar -->
+                            <div class="menutop">
+                                <div class="toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></div>
+                                <h2>Menu</h2>
+                            </div>
+                            <!-- End Icon-bar -->
+                            <h:form>
+                                <ul style="display:none;" class="submenu">
+                                    <li>
+                                        <ul class="topnav">
+
+                                            <!--Home-->
+                                            <li class="level0 nav-6 level-top first parent"> 
+                                                <!--<a class="level-top" href="Client/index.xhtml"> <span>Home</span> </a>-->
+                                                <h:link outcome="index.xhtml" class="level-top" styleClass="#{active_home_menu}"><span>Home</span></h:link>
+                                            </li>
+
+                                            <!--Pages-->
+                                            <li class="level0 nav-6 level-top"> <h:link class="level-top" styleClass="#{active_product_menu}"> <span>Products</span> </h:link>
+                                                <ul class="level0">
+                                                    <li class="level1 first">
+                                                        <h:link outcome="grid" styleClass="active" ><span>Grid view</span></h:link>
+                                                    </li>
+                                                    <li class="level1 nav-10-2"> 
+                                                        <h:link outcome="list" styleClass="active"><span>List view</span></h:link>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <!--End Pages-->   
+
+                                            <li class="level0 nav-6 level-top">
+                                                <h:link outcome="delivery" styleClass="#{active_delivery_menu}"><span>Delivery</span></h:link>
+                                            </li>
+                                            <li class="level0 nav-6 level-top">
+                                                <h:link outcome="faq" styleClass="#{active_faq_menu}"><span>FAQ</span></h:link>
+                                            </li>
+                                            <li class="level0 nav-6 level-top"> 
+                                                <h:link outcome="about_us" styleClass="#{active_about_menu}"><span>About us</span></h:link>
+                                            </li>
+                                            <li class="level0 nav-6 level-top"> 
+                                                <h:link outcome="contact_us" styleClass="#{active_contact_menu}"><span>Contact us</span></h:link>
+                                            </li>
+                                            <!--End Home-->
+                                            <!--Member-->
+                                            <c:if test="#{cus_loged != null}">
+                                                <li class="level0 parent drop-menu"> <h:link styleClass="#{active_member_menu}"> <span>Member</span> </h:link>
+                                                    <ul class="level1">
+                                                        <li class="level1 first">
+                                                            <h:commandLink role="menuitem" tabindex="-1" action="#{userController.updateProfile(cus_loged)}" styleClass="active">
+                                                                <h:graphicImage width="19" name="/client/asset/images/profile_icon.jpg" alt="My Profiles"/>
+                                                                <span>My Profiles</span>
+                                                            </h:commandLink>
+                                                        </li>
+                                                        <li class="level1 nav-10-2">
+                                                            <h:commandLink role="menuitem" tabindex="-1" action="wishlist?faces-redirect=true" styleClass="active">
+                                                                <h:graphicImage width="19" name="/client/asset/images/wishlist_icon.png" alt="My Wishlist"/>
+                                                                <span>My Wishlist</span>
+                                                            </h:commandLink>
+                                                        </li>
+                                                        <li class="level1 nav-10-3">
+                                                            <h:commandLink role="menuitem" tabindex="-1" action="checkout_info?faces-redirect=true" styleClass="active">
+                                                                <h:graphicImage width="19" name="/client/asset/images/order_icon.png" alt="My Ordering list"/>
+                                                                <span>My Ordering list</span>
+                                                            </h:commandLink>
+                                                        </li>
+                                                        <li class="level1 nav-10-4">
+                                                            <h:commandLink role="menuitem" tabindex="-1" action="checkout_billing?faces-redirect=true" styleClass="active">
+                                                                <h:graphicImage width="19" name="/client/asset/images/bill.png" alt="Billing information"/>
+                                                                <span>Billing information</span>
+                                                            </h:commandLink>
+                                                        </li>
+                                                        <li class="level1 nav-10-5">
+                                                            <h:commandLink role="menuitem" tabindex="-1" action="#{userController.logoutCus()}" styleClass="active">
+                                                                <h:graphicImage width="19" name="/client/asset/images/logout.jpg" alt="Logout"/>
+                                                                <span>Logout</span>
+                                                            </h:commandLink>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </c:if>
+                                            <c:if test="#{cus_loged == null}">
+                                                <li class="level0 nav-6 level-top">
+                                                    <h:link outcome="login?faces-redirect=true" styleClass="#{active_login_menu}"><span>Login</span></h:link>
+                                                </li>
+                                            </c:if>
+                                            <!--End Member-->
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </h:form>
+                        </li>
+                    </ul> 
+                </div>
+
+                <!--End Mobile Menu -->
+
+                <!-- Desktop Navigation Bar -->
+
+                <!-- Logo -->
+                <h:link class="logo-small" title="Inspiring Furniture" outcome="index.xhtml">
+                    <h:graphicImage alt="Inspiring Furniture" name="/client/asset/images/logo-small.png"/>
+                </h:link>
+                <!-- End Logo -->
+                <h:form>
+                    <ul id="nav" class="hidden-xs">
+
+                        <!-- Home -->
+                        <li class="level0 parent drop-menu"><h:link outcome="index?faces-redirect=true" styleClass="#{active_home_menu}"><span>Home</span></h:link>
+                        </li>
+                        <!-- End Home -->
+
+                        <!--Product-->
+                        <li class="level0 parent drop-menu"><h:link styleClass="#{active_product_menu}"><span>Products</span> </h:link>
+                            <ul class="level1">
+                                <li class="level1 first"><h:link outcome="grid"><span>Grid view</span></h:link></li>
+                                <li class="level1 nav-10-2"> <h:link outcome="list"><span>List view</span></h:link></li>
+                                <!--<li class="level1 nav-10-3"> <h:link outcome="product_detail"><span>Product Details</span></h:link></li>
+                                <li class="level1 nav-10-4"> <h:link outcome="shopping_cart"><span>Shopping Cart</span></h:link></li>
+                                <li class="level1 nav-10-4"><h:link outcome="wishlist"><span>Wishlist</span></h:link></li>-->
+                            </ul>
+                        </li>
+                        <!--End Product-->   
+
+                        <li class="level1"><h:link styleClass="#{active_delivery_menu}" outcome="delivery"><span>Delivery</span></h:link></li>
+                        <li class="level1"><h:link styleClass="#{active_faq_menu}" outcome="faq"><span>FAQ</span></h:link></li>
+                        <li class="level1"><h:link styleClass="#{active_about_menu}" outcome="about_us"><span>About us</span></h:link></li>
+                        <li class="level1"><h:link styleClass="#{active_contact_menu}" outcome="contact_us"><span>Contact us</span></h:link></li>
+
+                        <!--Member-->
+                        <c:if test="#{cus_loged != null}">
+                            <li class="level0 parent drop-menu"> <h:link styleClass="#{active_member_menu}"> <span>Member</span> </h:link>
+                                <ul class="level1">
+                                    <li class="level1 first">
+                                        <h:commandLink role="menuitem" tabindex="-1" action="#{userController.updateProfile(cus_loged)}" styleClass="active">
+                                            <h:graphicImage width="19" name="/client/asset/images/profile_icon.jpg" alt="My Profiles"/>
+                                            <span>My Profiles</span>
+                                        </h:commandLink>
+                                    </li>
+                                    <li class="level1 nav-10-2">
+                                        <h:commandLink role="menuitem" tabindex="-1" action="wishlist?faces-redirect=true" styleClass="active">
+                                            <h:graphicImage width="19" name="/client/asset/images/wishlist_icon.png" alt="My Wishlist"/>
+                                            <span>My Wishlist</span>
+                                        </h:commandLink>
+                                    </li>
+                                    <li class="level1 nav-10-3">
+                                        <h:commandLink role="menuitem" tabindex="-1" action="checkout_info?faces-redirect=true" styleClass="active">
+                                            <h:graphicImage width="19" name="/client/asset/images/order_icon.png" alt=">My Ordering list"/>
+                                            <span>My Ordering list</span>
+                                        </h:commandLink>
+                                    </li>
+                                    <li class="level1 nav-10-4">
+                                        <h:commandLink role="menuitem" tabindex="-1" action="checkout_billing?faces-redirect=true" styleClass="active">
+                                            <h:graphicImage width="19" name="/client/asset/images/bill.png" alt="Billing information"/>
+                                            <span>Billing information</span>
+                                        </h:commandLink>
+                                    </li>
+                                    <li class="level1 nav-10-5">
+                                        <h:commandLink role="menuitem" tabindex="-1" action="#{userController.logoutCus()}" styleClass="active">
+                                            <h:graphicImage width="19" name="/client/asset/images/logout.jpg" alt="Logout"/>
+                                            <span>Logout</span>
+                                        </h:commandLink>
+                                    </li>
+                                </ul>
+                            </li>
+                        </c:if>
+                        <c:if test="#{cus_loged == null}">
+                            <li class="level0 nav-6 level-top">
+                                <h:link outcome="login?faces-redirect=true" styleClass="#{active_login_menu}"><span>Login</span></h:link>
+                            </li>
+                        </c:if>
+                        <!--End Member-->
+
+                        <!-- Furniture -->
+                        <li class="nav-custom-link level0 level-top parent"> <a class="level-top" href="#"><span>Furniture</span></a>
+                            <div class="level0-wrapper custom-menu" style="left: 0px; display: none;">
+                                <div class="header-nav-dropdown-wrapper clearer">
+                                    <c:forEach var="cate" items="#{categoryController.listAll()}">
+                                        <div class="grid12-5">
+                                            <div class="custom_img"><h:link ><h:graphicImage name="client/products-images/category/#{cate.cateIcon}" alt="#{cate.cateName}"/></h:link></div>
+                                            <p>#{cate.cateDescription}</p>
+                                            <button class="learn_more_btn" type="button"><span>Learn More</span></button>
+                                        </div>
+                                    </c:forEach>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- End Furniture -->
+                    </ul>
+                </h:form>
+                <!-- End Desktop Navigation Bar -->
+
+            </div>
+        </div>
+    </nav>
+    <!-- End Navigation Bar -->
+
+</ui:composition>
+

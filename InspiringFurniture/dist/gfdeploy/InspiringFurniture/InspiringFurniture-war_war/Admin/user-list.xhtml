@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./templates/adminTemplate.xhtml">
+
+            <ui:param name="breadcrumb_title" value="Users &rArr; List"/>
+
+            <ui:param name="active_user_menu" value="active"/>
+
+            <ui:define name="content">
+
+                <div class="page-content">
+                    <div id="tab-general">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <h:form>
+                                    <div id="Message" style="display: block">
+                                        <h:messages globalOnly="true" 
+                                                    style="display: block; font-size: 11pt; font-style: italic; background:#F00; color: #FFF;"/>
+                                    </div>
+                                    <div class="panel panel-blue" style="background:#FFF;">
+<!--                                        <div class="panel-heading">
+                                            <h:link outcome="user-add?faces-redirect=true"><span class="btn btn-warning"><i class="fa fa-plus fa-fw"/>Create new</span></h:link>
+                                        </div>-->
+                                        <div class="panel-body table table-responsive">
+                                            <table class="table table-hover table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Email</th>
+                                                        <th>Fullname</th>
+                                                        <th>Gender</th>
+                                                        <th>Address</th>
+                                                        <th>Phone</th>
+                                                        <th>Birthday</th>
+                                                        <th>Identity</th>
+                                                        <th>Role</th>
+                                                        <th>Status</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                    <c:forEach var="u" items="#{userController.listAll()}">
+                                                        <tr>
+                                                            <td>#{u.userId}</td>
+                                                            <td>#{u.userEmail}</td>
+                                                            <h:inputHidden value="#{u.userPassword}"/>
+                                                            <td>#{u.userFullname}</td>
+                                                            <td>#{u.userGender}</td>
+                                                            <td>#{u.userAddress}</td>
+                                                            <td>#{u.userPhone}</td>
+                                                            <td>
+                                                                <h:outputText value="#{u.userBirthday}">
+                                                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="Asia/Ho_Chi_Minh"/>
+                                                                </h:outputText>
+                                                                
+                                                            </td>
+                                                            <td>#{u.userIdentity}</td>
+                                                            <td>
+                                                                <c:if test="#{u.userAdmin == true}">
+                                                                    <i>Admin</i>
+                                                                </c:if>
+                                                                <c:if test="#{u.userAdmin != true}">
+                                                                    <i>Customer</i>
+                                                                </c:if>
+                                                            </td>
+                                                            
+                                                            <td>
+                                                                <c:if test="#{u.userStatus == true}">
+                                                                    <i>Active</i>
+                                                                </c:if>
+                                                                <c:if test="#{u.userStatus != true}">
+                                                                    <i>------</i>
+                                                                </c:if>
+                                                            </td>
+                                                            
+                                                            <td>
+                                                                <h:commandLink title="Edit" action="#{userController.edit(u)}" class="btn btn-primary">
+                                                                    <span class="fa fa-edit" style="font-size: large"></span>
+                                                                </h:commandLink>
+                                                                &nbsp;
+                                                                <h:commandLink class="btn btn-danger" title="Delete" action="#{userController.delete(u)}" onclick="return confirm('Delete #{u.userEmail}, Are you sure?')">
+                                                                    <span class="fa fa-trash-o" style="font-size: large">&nbsp;</span>
+                                                                </h:commandLink>
+
+                                                            </td>
+                                                        </tr>
+                                                    </c:forEach>
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <!--                                                    <th></th>
+                                                                                                            <th><i>4 People</i></th>
+                                                                                                            <th></th>
+                                                                                                            <th><i>1 Approved</i></th>-->
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </h:form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
+

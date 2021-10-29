@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./templates/clientTemplate.xhtml">
+
+            <ui:param name="active_product_menu" value="active"/>
+
+            <ui:define name="content">
+
+
+                <!-- BEGIN LIST-PRODUCTS -->    
+                <!--                <section class="main-container col1-layout">
+                                    <div class="main container">
+                                        <div class="col-main">-->
+                <section class="main-container col2-left-layout">
+                    <div class="main container">
+                        <div class="row">
+
+                            <!--MAIN ASIDE-->
+                            <section class="col-main col-sm-9 col-xs-12 col-sm-push-3 wow">
+
+                                <div class="category-products">
+                                    <div class="toolbar">
+                                        <div class="sorter">
+                                            <div class="view-mode"> <h:link outcome="grid" title="Grid" class="button button-grid">Grid</h:link><span title="List" class="button button-active button-list">List</span>&nbsp; </div>
+                                        </div>
+                                        <div id="sort-by">
+                                            <label class="left">Sort By: </label>
+                                            <ul>
+                                                <li><a href="#">Position<span class="right-arrow"></span></a>
+                                                    <ul>
+                                                        <li><a href="#">Name</a></li>
+                                                        <li><a href="#">Price</a></li>
+                                                        <li><a href="#">Position</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                            <a class="button-asc left" href="#?dir=desc&amp;order=position" title="Set Descending Direction"><span style="color:#999;font-size:11px;" class="glyphicon glyphicon-arrow-up"></span></a> </div>
+                                        <div class="pager">
+                                            <div id="limiter">
+                                                <label>View: </label>
+                                                <ul>
+                                                    <li><a href="#">15<span class="right-arrow"></span></a>
+                                                        <ul>
+                                                            <li><a href="#">20</a></li>
+                                                            <li><a href="#">30</a></li>
+                                                            <li><a href="#">35</a></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="pages">
+                                                <label>Page:</label>
+                                                <ul class="pagination">
+                                                    <li><a href="#">«</a></li>
+                                                    <li class="active"><a href="#">1</a></li>
+                                                    <li><a href="#">2</a></li>
+                                                    <li><a href="#">3</a></li>
+                                                    <li><a href="#">4</a></li>
+                                                    <li><a href="#">5</a></li>
+                                                    <li><a href="#">»</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul id="products-list" class="products-list">
+                                        <!--Show Products-->
+                                        <c:forEach var="p" items="#{productController.listAll()}">
+                                            <li class="item odd">
+                                                <div class="col-item">
+                                                    <div class="product_image">
+                                                        <div class="images-container"> 
+                                                                <h:graphicImage name="client/products-images/#{productImageController.getImageByProdId(p.prodId)}" class="img-responsive" alt="a"/> 
+                                                            <div class="qv-button-container">
+                                                                <h:form>
+                                                                    <h:commandLink title="View details" action="#{productController.productDetail(p)}">
+                                                                        <span><span>View details</span></span>
+                                                                    </h:commandLink> 
+                                                                </h:form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-shop">
+                                                        <h2 class="product-name">
+                                                                #{p.prodName} 
+                                                        </h2>
+                                                        <div class="price-box">
+                                                            <p class="old-price"> <span class="price-label"></span> <span id="old-price-212" class="price"> $#{p.prodOldprice} </span> </p>
+                                                            <p class="special-price"> <span class="price-label"></span> <span id="product-price-212" class="price"> $#{p.prodPrice} </span> </p>
+                                                        </div>
+                                                        <div class="ratings">
+                                                            <div class="rating-box">
+                                                                <div style="width:50%" class="rating"></div>
+                                                            </div>
+                                                            <p class="rating-links"> <a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#review-form">Add Your Review</a> </p>
+                                                        </div>
+                                                        <h:form>
+                                                        <div class="desc std">
+                                                            <p>#{p.prodShortdes} &nbsp;
+                                                                
+                                                                <h:commandButton class="button btn-cart" value="..More Details" action="#{productController.productDetail(p)}"
+                                                                                 style="border: transparent" />
+                                                                
+                                                            </p>
+                                                        </div>
+                                                        </h:form>
+                                                        <h:form id="form">
+                                                            <div class="actions">
+                                                                <c:if test="#{p.prodQuantity > 0}" >
+                                                                    <h:inputHidden value="#{userController.setTarget('list')}" />
+                                                                    <h:commandButton class="button btn-cart ajx-cart" value="Add to Cart" type="button" action="shopping_cart_list?faces-redirect=true">
+
+                                                                        <f:ajax listener="#{cartController.addItemToCart(p.prodId, p.prodName, p.prodPrice)}" render="cart-total" />
+
+                                                                    </h:commandButton>
+                                                                </c:if>
+                                                                <c:if test="#{p.prodQuantity == 0}" >
+                                                                    <span class="availability out-of-stock">Out of Stock</span>
+                                                                </c:if>
+                                                                <c:if test="#{cus_loged != null}">
+                                                                <span class="add-to-links"> 
+                                                                    <h:commandLink title="Add to Wishlist" class="button link-wishlist" action="wishlist?faces-redirect=true">
+                                                                        <span>Add to Wishlist</span>
+                                                                        <f:ajax listener="#{wishlistController.addItemWishList(p.prodId, p.prodName, p.prodPrice)}" />
+                                                                    </h:commandLink> 
+                                                                </span>
+                                                                </c:if>
+                                                            </div>
+                                                        </h:form>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </c:forEach>
+                                    </ul>
+                                </div>
+
+                            </section>
+                            <!--END MAIN ASIDE-->
+
+                            <!--LEFT ASIDE-->
+                            <ui:include src="./templates/_leftaside.xhtml"/>
+                            <!--END LEFT ASIDE-->
+
+                        </div>
+                    </div>
+                </section>
+                <!-- END LIST-PRODUCTS -->    
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

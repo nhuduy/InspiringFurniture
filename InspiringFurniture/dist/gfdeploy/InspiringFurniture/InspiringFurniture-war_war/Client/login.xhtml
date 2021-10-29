@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:decorate template="./templates/clientTemplate.xhtml">
+            <ui:param name="active_login_menu" value="active"/>
+            
+            <ui:define name="content">
+                <f:metadata>
+                    <f:viewAction action="#{userController.checkLoginCus('index')}" />
+                </f:metadata>
+                <!-- Embed content here -->
+                <section class="main-container col1-layout">
+                    <div class="main container">
+                        <div class="account-login">
+                            <div class="page-title">
+                                <h2>Login or Create an Account</h2>
+                            </div>
+                            <h:form>
+                                <!--<p:growl autoUpdate="true"/>-->
+<!--                                <div id="Message" style="display: block">
+                                    <h:messages globalOnly="true" for="showMessage"
+                                                style="display: block; font-size: 11pt; font-style: italic; background:#F00; color: #FFF;"/>
+                                </div>-->
+                                <fieldset class="col2-set">
+                                    <legend>Login or Create an Account</legend>
+                                    <div class="col-1 new-users"><strong>New Members</strong>
+                                        <div class="content">
+                                            <p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
+                                            <div class="buttons-set">
+                                                <h:button outcome="register" class="button create-account" value="Create an Account"><span></span></h:button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-2 registered-users"><strong>Member Login</strong>
+                                        <div class="content">
+                                            <p>If you have an account with us, please log in.</p>
+                                            <ul class="form-list">
+                                                <li>
+                                                    <label for="email">Email Address <span class="required">*</span></label>
+                                                    <br/>
+                                                    <h:inputText title="Email Address" class="input-text required-entry" id="email" value="#{userController.userEmail}" />
+                                                </li>
+                                                <li>
+                                                    <label for="pass">Password <span class="required">*</span></label>
+                                                    <br/>
+                                                    <h:inputSecret title="Password" id="pass" class="input-text required-entry validate-password" value="#{userController.userPassword}" />
+                                                </li>
+                                            </ul>
+                                            <p class="required">* Required Fields</p>
+                                            <div class="buttons-set">
+                                                <!--<button id="send2" name="send" type="submit" class="button login"><span>Login</span></button>-->
+                                                <h:commandButton style="width: 50%" id="send2" class="button login" value="Login" action="#{userController.loginCus()}"/>
+                                                <br/><br/>
+                                                
+                                            </div>
+                                            <h:link outcome="reset_pass?faces-redirect=true" class="forgot-word"
+                                                                 value="Forgot Your Password?"/>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </h:form>
+                        </div>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                    </div>
+                </section>
+                <!-- Embed content here -->
+            </ui:define>
+
+        </ui:decorate>
+
+    </body>
+</html>

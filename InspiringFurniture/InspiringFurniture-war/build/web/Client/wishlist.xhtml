@@ -1,0 +1,155 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./templates/clientTemplate.xhtml">
+
+            <ui:param name="active_member_menu" value="active"/>
+
+            <ui:define name="content">
+                <f:metadata>
+                    <f:viewAction action="#{userController.checkLoginCus('wishlist')}" />
+                </f:metadata>
+                <!-- Embed content here -->
+                <h:form>
+                    <p:growl id="facesMessage" autoUpdate="true"/>
+                    <div class="main-container col2-right-layout">
+                        <div class="main container">
+                            <div class="row">
+                                <div class="col-sm-2"></div>
+                                <section class="col-main col-sm-8 wow">
+                                    <div class="my-account">
+                                        <div class="page-title">
+                                            <h2>My Wishlist</h2>
+                                        </div>
+                                        <div class="my-wishlist">
+                                            <div class="table-responsive">
+                                                <!--<form method="post" action="#/wishlist/index/update/wishlist_id/1/" id="wishlist-view-form">-->
+                                                <fieldset>
+                                                    <input type="hidden" value="ROBdJO5tIbODPZHZ" name="form_key" />
+                                                    <table id="wishlist-table" class="clean-table linearize-table data-table">
+                                                        <thead>
+                                                            <tr class="first last">
+                                                                <th class="customer-wishlist-item-image"></th>
+                                                                <th class="customer-wishlist-item-info"></th>
+                                                                <!--                                          <th class="customer-wishlist-item-quantity">Quantity</th>-->
+                                                                <th class="customer-wishlist-item-price">Price</th>
+                                                                <th class="customer-wishlist-item-cart"></th>
+                                                                <th class="customer-wishlist-item-remove"></th>
+                                                            </tr>
+                                                        </thead>
+                                                        <c:forEach var="item" items="#{wishlistController.listByUserId()}">
+                                                            <tbody>
+                                                                <tr id="item_31" class="first odd">
+                                                                    <td class="wishlist-cell0 customer-wishlist-item-image">
+                                                                        <a title="Softwear Women's Designer" href="#/" class="product-image"> 
+                                                                            <h:graphicImage width="150" name="client/products-images/#{productImageController.getImageByProdId(item.prodId.prodId)}" /> 
+                                                                        </a></td>
+                                                                    <td class="wishlist-cell1 customer-wishlist-item-info"><h3 class="product-name"><a title="Softwear Women's Designer" href="#">#{item.prodId.prodName}</a></h3>
+                                                                        <div class="description std">
+                                                                            <div class="inner">#{item.prodId.prodShortdes}</div>
+                                                                        </div>
+                                                                        <!--<textarea title="Comment" onblur="focusComment(this)" onfocus="focusComment(this)" cols="5" rows="3" name="description[31]" style="height: 120px; width: 96%;"></textarea>-->
+                                                                        <div class="description std">
+                                                                            <div class="inner">#{item.prodId.prodDetaildes}</div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td data-rwd-label="Price" class="wishlist-cell3 customer-wishlist-item-price"><div class="cart-cell">
+                                                                            <div class="price-box"> <span id="product-price-39" class="regular-price"> <span class="price">$#{item.prodId.prodPrice}</span> </span> </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <c:if test="#{item.prodId.prodQuantity > 0}" >
+                                                                        <td class="wishlist-cell4 customer-wishlist-item-remove last">
+                                                                            <h:commandLink class="cart-item" title="Add to Cart"  action="shopping_cart_grid?faces-redirect=true">
+                                                                                <span><span></span></span>
+                                                                                <f:ajax listener="#{cartController.addItemToCart(item.prodId.prodId, item.prodId.prodName, item.prodId.prodPrice)}" render="cart-total" />
+                                                                            </h:commandLink>
+                                                                        </td>
+                                                                    </c:if>
+                                                                    <td class="wishlist-cell5 customer-wishlist-item-remove last">
+                                                                        <h:commandLink class="remove-item" title="Remove item" 
+                                                                                       action="#{wishlistController.delete(item)}" 
+                                                                                    onclick="return confirm('Remove #{item.prodId.prodName}, Are you sure?')" >
+                                                                            <span><span></span></span>
+                                                                        </h:commandLink>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </c:forEach>
+                                                    </table>
+                                                    <div class="buttons-set">
+                                                        <p class="back-link"><h:link outcome="index?faces-redirect=true"><small>« </small>Back to index</h:link></p>
+                                                    </div>
+<!--                                                    <div class="buttons-set buttons-set2">
+                                                        <h:commandLink class="button btn-update" action="#{wishlistController.addWishlist()}">
+                                                            <span>Update Wishlist</span>
+                                                        </h:commandLink>
+                                                        <button class="button btn-share" title="Share Wishlist" name="save_and_share" type="submit"><span>Share Wishlist</span></button>
+                                                        <button class="button btn-add" onclick="addAllWItemsToCart()" title="Add All to Cart" type="button"><span>Add All to Cart</span></button>
+                                                        <button class="button btn-update" title="Update Wishlist" name="do" type="submit"><span>Update Wishlist</span></button>
+                                                    </div>-->
+                                                </fieldset>
+
+                                                <!--</form>-->
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </section>
+<!--                                <aside class="col-right sidebar col-sm-3 wow">
+                                    <div class="block block-account">
+                                        <div class="block-title">My Account</div>
+                                        <div class="block-content">
+                                            <ul>
+                                                <li class="current"><a>Account Dashboard</a></li>
+                                                <li><a href="#customer/account/edit/">Account Information</a></li>
+                                                <li><a href="#customer/address/">Address Book</a></li>
+                                                <li><a href="#sales/order/history/">My Orders</a></li>
+                                                <li><a href="#sales/billing_agreement/">Billing Agreements</a></li>
+                                                <li><a href="#sales/recurring_profile/">Recurring Profiles</a></li>
+                                                <li><a href="#review/customer/">My Product Reviews</a></li>
+                                                <li><a href="#tag/customer/">My Tags</a></li>
+                                                <li><a href="#wishlist/">My Wishlist</a></li>
+                                                <li><a href="#downloadable/customer/products/">My Downloadable</a></li>
+                                                <li class="last"><a href="#newsletter/manage/">Newsletter Subscriptions</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="block block-compare">
+                                        <div class="block-title "><span>Compare Products (2)</span></div>
+                                        <div class="block-content">
+                                            <ol id="compare-items">
+                                                <li class="item odd">
+                                                    <input type="hidden" value="2173" class="compare-item-id" />
+                                                    <a class="btn-remove1" title="Remove This Item" href="#"></a> <a href="#" class="product-name"> Sofa with Box-Edge Polyester Wrapped Cushions</a> </li>
+                                                <li class="item last even">
+                                                    <input type="hidden" value="2174" class="compare-item-id" />
+                                                    <a class="btn-remove1" title="Remove This Item" href="#"></a> <a href="#" class="product-name"> Sofa with Box-Edge Down-Blend Wrapped Cushions</a> </li>
+                                            </ol>
+                                            <div class="ajax-checkout">
+                                                <button type="submit" title="Submit" class="button button-compare"><span>Compare</span></button>
+                                                <button type="submit" title="Submit" class="button button-clear"><span>Clear</span></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </aside>-->
+                            </div>
+                        </div>
+                    </div>
+                </h:form>
+                <!-- Embed content here -->
+            </ui:define>
+
+        </ui:composition>>
+
+    </body>
+</html>

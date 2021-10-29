@@ -1,0 +1,206 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./templates/adminTemplate.xhtml">
+
+            <ui:param name="breadcrumb_title" value="Dashboard"/>
+
+            <ui:param name="active_dashboard_menu" value="active"/>
+
+            <ui:define name="content">
+
+                <div id="sum_box" class="row mbl">
+                    <div class="col-sm-12 col-md-8 block-space">
+                        <div class="panel profit db mbm">
+                            <div class="panel-body">
+                                <p class="icon">
+                                    <i class="icon icon-basket"></i>
+                                </p>
+                                <h4 class="value">
+                                    <span data-counter="" data-start="10" data-end="50" data-step="1" data-duration="0">
+                                    </span><span>$</span></h4>
+                                <p class="description">
+                                    Profit description</p>
+                                <!--                                <div class="progress progress-sm mbn">
+                                                                    <div role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
+                                                                         style="width: 80%;" class="progress-bar progress-bar-success">
+                                                                        <span class="sr-only">80% Complete (success)</span></div>
+                                                                </div>-->
+
+                                <h:form>
+                                    <!--<c:forEach var="u" items="#{userController.listAll()}">-->
+                                    <section class="main-container col1-layout">
+                                        <div class="main container">
+                                            <div class="col-main">
+                                                <div class="cart wow">
+                                                    
+                                                    <div class="table-responsive">
+
+                                                        
+                                                        <fieldset>
+                                                            <table class="data-table cart-table" id="shopping-cart-table">
+                                                                <thead>
+                                                                    <tr class="first last" style="background: lightgrey">
+                                                                        <th>#</th>
+                                                                        <th>Created Date</th>
+                                                                        <th>Delivery Date</th>
+                                                                        <th class="a-right">Delivery Address</th>
+                                                                        <th class="a-center">Total</th>
+                                                                        <th class="a-center">Status</th>
+                                                                        <th class="text-center">Action</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+<!--                                                                    <c:forEach var="new" items="#{transactionsController.listByUserId(u.userId,'all')}">
+                                                                        <tr class="first odd" style="background: lightgreen">
+                                                                            <td class="a-center" >
+                                                                                <span style="color: yellow; background: red; font-weight: bold; font-size: small">new</span>
+                                                                                                                                                <span>
+                                                                                                                                                    <img src="../resources/client/asset/images/new.gif" width="36%" />
+                                                                                                                                                </span>
+
+                                                                            </td>
+                                                                            <td class="a-center">
+                                                                                <h:outputText value="#{new.tranCreatedDate}">
+                                                                                    <f:convertDateTime type="datetime" pattern="dd-MM-yyyy" timeZone="Asia/Ho_Chi_Minh"/>
+                                                                                </h:outputText>
+                                                                            </td>
+                                                                            <td class="a-center">
+                                                                                <h:outputText value="#{new.tranDeliveryDate}">
+                                                                                    <f:convertDateTime type="datetime" pattern="dd-MM-yyyy" timeZone="Asia/Ho_Chi_Minh"/>
+                                                                                </h:outputText>
+                                                                            </td>
+                                                                            <td class="a-center">
+                                                                                #{new.tranDeliveryAddress}
+                                                                            </td>
+                                                                            <td class="a-right"><span class="cart-price"> <span
+                                                                                        class="price">$#{new.tranTotal}</span> </span></td>
+
+                                                                            <td class="a-right movewishlist Prices" id="Prices">
+                                                                                #{new.tranStatus}
+                                                                            </td>
+                                                                            <td class="text-center">
+                                                                                <h:commandButton class="btn btn-success"
+                                                                                                 value="View details" 
+                                                                                                 action="#{transactionsController.view(new)}" />
+                                                                            </td>
+                                                                        </tr>
+                                                                    </c:forEach>-->
+                                                                    <c:forEach var="tran" items="#{transactionsController.listByUserId('all')}">
+                                                                        <tr class="first even">
+                                                                            <td class="a-center">
+                                                                                #{tran.tranId}
+                                                                            </td>
+                                                                            <td class="a-center">
+                                                                                <h:outputText value="#{tran.tranCreatedDate}">
+                                                                                    <f:convertDateTime type="datetime" pattern="dd-MM-yyyy" timeZone="Asia/Ho_Chi_Minh"/>
+                                                                                </h:outputText>
+                                                                            </td>
+                                                                            <td class="a-center">
+                                                                                <h:outputText value="#{tran.tranDeliveryDate}">
+                                                                                    <f:convertDateTime type="datetime" pattern="dd-MM-yyyy" timeZone="Asia/Ho_Chi_Minh"/>
+                                                                                </h:outputText>
+                                                                            </td>
+                                                                            <td class="a-center">
+                                                                                #{tran.tranDeliveryAddress}
+                                                                            </td>
+                                                                            <td class="a-right"><span class="cart-price"> <span
+                                                                                        class="price">$#{tran.tranTotal}</span> </span></td>
+
+                                                                            <td class="a-right movewishlist Prices" id="Prices">
+                                                                                #{tran.tranStatus}
+                                                                            </td>
+                                                                            <td class="a-center last text-center">
+                                                                                <h:commandButton class="btn btn-success"
+                                                                                                 value="View details" 
+                                                                                                 action="#{transactionsController.view(tran)}" />
+                                                                            </td>
+                                                                        </tr>
+                                                                    </c:forEach>                                                    
+                                                                </tbody>
+                                                            </table>
+                                                        </fieldset>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                    <!--</c:forEach>-->
+                                </h:form>
+                            </div>
+                        </div>
+                    </div>
+                    <!--                    
+                                        <div class="col-sm-6 col-md-3 block-space">
+                                            <div class="panel income db mbm">
+                                                <div class="panel-body">
+                                                    <p class="icon">
+                                                        <i class="icon icon-wallet"></i>
+                                                    </p>
+                                                    <h4 class="value">
+                                                        <span>215</span><span>$</span></h4>
+                                                    <p class="description">
+                                                        Income detail</p>
+                                                    <div class="progress progress-sm mbn">
+                                                        <div role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+                                                             style="width: 60%;" class="progress-bar progress-bar-info">
+                                                            <span class="sr-only">60% Complete (success)</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-md-3 block-space">
+                                            <div class="panel task db mbm">
+                                                <div class="panel-body">
+                                                    <p class="icon">
+                                                        <i class="icon icon-check"></i>
+                                                    </p>
+                                                    <h4 class="value">
+                                                        <span>215</span></h4>
+                                                    <p class="description">
+                                                        Task completed</p>
+                                                    <div class="progress progress-sm mbn">
+                                                        <div role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"
+                                                             style="width: 50%;" class="progress-bar progress-bar-danger">
+                                                            <span class="sr-only">50% Complete (success)</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-md-3">
+                                            <div class="panel visit db mbm">
+                                                <div class="panel-body">
+                                                    <p class="icon">
+                                                        <i class="icon icon-users"></i>
+                                                    </p>
+                                                    <h4 class="value">
+                                                        <span>128</span></h4>
+                                                    <p class="description">
+                                                        Visitor description</p>
+                                                    <div class="progress progress-sm mbn">
+                                                        <div role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"
+                                                             style="width: 70%;" class="progress-bar progress-bar-warning">
+                                                            <span class="sr-only">70% Complete (success)</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>-->
+                </div>
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

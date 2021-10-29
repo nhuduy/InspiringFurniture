@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./templates/clientTemplate.xhtml">
+
+            <ui:param name="active_home_menu" value=""/>
+            <ui:param name="active_page_menu" value="active"/>
+
+            <ui:define name="content">
+                <!-- Embed content here -->
+                <section class="main-container col1-layout">
+                    <div class="main container">
+                        <div class="col-main">
+                            <div>
+
+                                <div class="row">
+                                    <div class="col-sm-2 col-md-2 col-lg-2"></div>
+                                    <div class="col-sm-8 col-md-8 col-lg-8"> 
+                                        <br></br>
+                                        <h:graphicImage name="/client/asset/images/thankyoucard/thankyou.png" alt="" style="width: 100%"/>
+                                        <br></br>
+                                        <hr></hr>
+                                        <div style="text-align: center" class="page-title">
+                                            <h1>Coming soon...</h1>
+                                        </div>
+                                        <br></br>
+                                        <br></br>
+                                        <!--                                            <h3>You have purchased</h3>-->
+                                        <!--                                            <ul class="styled-list arrow">
+                                                                                        <li><strong>72 Hour Deliveries </strong></li>
+                                                                                        <li><strong> 1-4 Weeks deliveries </strong></li>
+                                                                                        <li><strong>Mixed next day and 1 - 4 weeks deliveries on the same order. </strong></li>
+                                                                                        <p> If you have purchased items with different delivery dates on the same order,  i.e. next working day delivery, and 2 to 4 week delivery, your items will be delivered altogether</p>
+                                                                                        <li><strong>Fusce tincidunt, justo congue egestas</strong></li>
+                                                                                    </ul>-->     
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--                        <fieldset>
+                                                    <table class="data-table cart-table" id="shopping-cart-table">
+                                                        <thead>
+                                                            <tr class="first last">
+                                                                <th>#</th>
+                                                                <th>Created Date</th>
+                                                                <th>Delivery Date</th>
+                                                                <th class="a-right">Delivery Address</th>
+                                                                <th class="a-center">Total</th>
+                                                                <th class="a-center">Status</th>
+                                                                <th class="a-center">&nbsp;</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <c:forEach var="tran" items="#">
+                                                            <tr class="first odd">
+                                                                <td class="a-center">
+                                                                    #
+                                                                </td>
+                                                                <td class="a-center">
+                                                                    <h:outputText value="#">
+                                                                        <f:convertDateTime type="datetime" pattern="dd-MM-yyyy" timeZone="Asia/Ho_Chi_Minh"/>
+                                                                    </h:outputText>
+                                                                </td>
+                                                                <td class="a-center">
+                                                                    <h:outputText value="#">
+                                                                        <f:convertDateTime type="datetime" pattern="dd-MM-yyyy" timeZone="Asia/Ho_Chi_Minh"/>
+                                                                    </h:outputText>
+                                                                </td>
+                                                                <td class="a-center">
+                                                                    #
+                                                                </td>
+                                                                <td class="a-right"><span class="cart-price"> <span
+                                                                            class="price">#</span> </span></td>
+                        
+                                                                <td class="a-right movewishlist Prices" id="Prices">
+                                                                    #
+                                                                </td>
+                                                                <td class="a-center last">
+                                                                    <h:commandButton class="btn btn-success"
+                                                                                     value="View details" 
+                                                                                     action="#" />
+                                                                    <h:button class="btn btn-success" value="BILLING LIST" outcome="checkout_billing?faces-redirect=true"
+                                                                                                         style="width: 100%;" />
+                                                                </td>
+                                                            </tr>
+                                                            </c:forEach>                                                    
+                                                        </tbody>
+                                                    </table>
+                                                </fieldset>-->
+                    </div>
+                </section>
+                <!--                <section class="content-row grey-container wow">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-sm-6 col-md-6 col-lg-6">
+                                                <h3>Order Confirmation</h3>
+                                                <p><strong>Free Delivery.</strong> Vestibulum justo. Nulla mauris ipsum, convallis ut, vestibulum eu, tincidunt vel, nisi. Curabitur molestie euismod erat. </p>
+                                                <p><strong>Standard Mainland Delivery.</strong> Proin eros odio, mattis rutrum, pulvinar et, egestas vitae, magna. Integer semper, velit ut interdum malesuada, diam dolor pellentesque lacus, vitae.</p>
+                                                <p><strong>Express &amp; Delivery.</strong> Mauris lacinia lectus sit amet felis. Aliquam erat volutpat. Nulla porttitor tortor at nisl. Nam lectus nulla, bibendum pretium, dictum a, mattis nec, dolor.</p>
+                                                <a href="#" class="button more-info">More Info</a> 
+                                            </div>
+                                            <div class="col-sm-6 col-md-6 col-lg-6">
+                                                <h3>Returns &amp; Exchanges</h3>
+                                                <p>Vestibulum justo. Nulla mauris ipsum, convallis ut, vestibulum eu, tincidunt vel, nisi. Curabitur molestie euismod erat. Proin eros odio, mattis rutrum, pulvinar et, egestas vitae, magna. Integer volutpat. Nulla porttitor tortor at nisl. Nam lectus nulla, bibendum pretium, dictum a, mattis nec, dolor. Nullam id justo sed diam aliquam tincidunt. Duis sollicitudin, dui ac commodo iaculis.</p>
+                                                <ul class="styled-list arrow">
+                                                    <li><strong>Donec et mi eu massa ultrices scelerisque. </strong></li>
+                                                    <li><strong> Nullam ac nisi non eros gravida venenatis sollicitudin lobortis </strong></li>
+                                                    <li><strong>Curabitur convallis facilisis lorem. Vivamus euismod nulla vel nunc </strong></li>
+                                                    <li><strong>Fusce tincidunt, justo congue egestas</strong></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>-->
+                <!-- Embed content here -->
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

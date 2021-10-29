@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./templates/adminTemplate.xhtml">
+
+            <ui:param name="breadcrumb_title" value="ProductImages &rArr; Edit"/>
+
+            <ui:param name="active_productimages_menu" value="active"/>
+
+            <ui:define name="content">
+
+                <div class="page-content">
+                    <div id="tab-general">
+                        <div class="row mbl">
+                            <div class="col-lg-12">
+                                <div class="panel panel-blue" style="background:#FFF;">
+                                    <div class="panel-heading" >
+                                        <h:link outcome="productimages-list?faces-redirect=true"><span class="btn btn-warning"><i class="fa fa-list fa-fw"/> List all</span></h:link>
+                                    </div>
+                                    <div class="panel-body pan">
+
+                                        <h:form enctype="multipart/form-data">
+                                            <div class="form-body pal">
+                                                <div class="form-group">
+                                                    <div class="input-icon right">
+                                                        <h:outputLabel value="Product Image file:" for="productImage" />
+                                                        <h:outputText class="form-control" value="#{productImageController.productImage.proimgFile}"/>
+                                                        <h:inputHidden id="productImage" value="#{productImageController.productImage.proimgFile}"/>
+                                                        <h:inputFile class="form-control" 
+                                                                     value="#{productImageController.uploadedFile}" id="uploadImage"
+                                                                     />
+                                                        <h:message for="uploadImage" class="text-orange" style="font-size: 13pt; font-style: italic;"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="input-icon right">
+                                                        <h:outputLabel value="Product:" for="product" /> &nbsp; &nbsp; <span class="text-orange">#{productImageController.product.prodName}</span>
+                                                        <br/>
+                                                        <h:selectOneMenu value="#{productImageController.product.prodId}" class="form-control1" id="product">
+                                                            <f:selectItems 
+                                                                value="#{productController.listAll()}" 
+                                                                var="p" 
+                                                                itemLabel="#{p.prodName}" itemValue="#{p.prodId}"/>
+                                                        </h:selectOneMenu>
+                                                        <h:message for="product" class="text-orange" style="font-size: 13pt; font-style: italic;"/>
+                                                    </div>
+                                                </div>
+
+                                                <hr/>
+
+
+                                                <div class="form-actions text-right pal">
+
+                                                    <h:commandButton type="submit" value="Save" action="#{productImageController.edit()}" class="btn btn-primary" />
+
+                                                    <button type="reset" class="btn btn-cancel">
+                                                        <i class="fa fa-refresh fa-fw"></i>
+                                                        Reset
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </h:form>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
+

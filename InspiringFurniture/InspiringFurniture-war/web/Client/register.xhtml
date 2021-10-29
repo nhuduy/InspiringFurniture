@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:decorate template="./templates/clientTemplate.xhtml">
+            <ui:param name="active_register_menu" value="active"/>
+            
+            <ui:define name="content">
+                <!--<p:growl id="facesMessage"/>-->
+                <!-- Embed content here -->
+                <section class="main-container col1-layout">
+                    <div class="main container">
+                        <div class="account-login">
+                            <div class="page-title">
+                                <h2>Login or Create an Account</h2>
+                            </div>
+                            <fieldset class="col2-set">
+                                <legend>Login or Create an Account</legend>
+                                <div class="col-1 new-users"><strong>Login for Members</strong>
+                                    <div class="content">
+                                        <p>By Login with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
+                                        <div class="buttons-set">
+                                            <h:button outcome="login" class="button create-account" value="Login on Shop"><span></span></h:button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h:form>
+                                    <div class="col-2 registered-users"><strong>Member Registration</strong>
+                                        <div class="content">
+                                            <p>Please fill all..</p>
+                                            <ul class="form-list">
+                                                <li>
+                                                    <h:outputLabel value=" Email:" for="userEmail" />
+                                                    <i class="fa fa-envelope-o"></i><span class="required">*</span><br/>
+                                                    <h:inputText class="form-control" id="userEmail" value="#{userController.userEmail}" 
+                                                                 required="true" requiredMessage="Email is required."
+                                                                 validatorMessage="Length between 12 and 50 (Ex: someone@gmail.com)" >
+                                                        <f:validateLength minimum="12" maximum="50" />
+                                                        <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+                                                    </h:inputText>
+                                                    <h:message for="userEmail" class="text-orange" style="font-size: 11pt; font-style: italic; color: red;"/>
+                                                </li>
+                                                <li>
+                                                    <h:outputLabel value=" Password:" for="userPassword" />
+                                                    <i class="fa fa-keyboard-o"></i><span class="required">*</span><br/>
+                                                    <h:inputSecret class="form-control" id="userPassword" value="#{userController.user.userPassword}" 
+                                                                   required="true" requiredMessage="Password is required."
+                                                                   validatorMessage="Length between 8 and 64" >
+                                                        <f:validateLength minimum="8" maximum="64" />
+                                                    </h:inputSecret>
+                                                    <h:message for="userPassword" class="text-orange" style="font-size: 11pt; font-style: italic; color: red;"/>
+                                                </li>
+                                                <li>
+                                                    <h:outputLabel value=" Confirm Password:" for="confirmPassword" />
+                                                    <i class="fa fa-keyboard-o"></i><span class="required">*</span><br/>
+                                                    <h:inputSecret class="form-control" id="confirmPassword" value="#{userController.confirmPassword}" 
+                                                                   required="true" requiredMessage="Confirm Password is required."
+                                                                   validatorMessage="Length between 8 and 64">
+                                                        <f:validateLength minimum="8" maximum="64" />
+                                                    </h:inputSecret>
+                                                    <h:message for="confirmPassword" class="text-orange" style="font-size: 11pt; font-style: italic; color: red;"/>
+                                                </li>
+                                                <li>
+                                                    <h:outputLabel value=" Full name:" for="userFullname" />
+                                                    <i class="fa fa-keyboard-o"><span class="required">*</span></i><br/>
+                                                    <h:inputText class="form-control" id="userFullname" value="#{userController.user.userFullname}" required="true" requiredMessage="Fullname is required."/>
+                                                    <h:message for="userFullname" class="text-orange" style="font-size: 11pt; font-style: italic; color: red;"/>
+                                                </li>
+                                                <li>
+                                                    <h:outputLabel value=" Gender:" for="userGender" />
+                                                    <i class="fa fa-keyboard-o"><span class="required">*</span></i>
+                                                    <h:message for="userGender" class="text-orange" style="font-size: 11pt; font-style: italic; color: red;"/>
+                                                    <h:selectOneMenu class="form-control" id="userGender" value="#{userController.user.userGender}" style="width: 100%">
+                                                        <f:selectItem itemValue="Male" itemLabel="Male" />
+                                                        <f:selectItem itemValue="Female" itemLabel="Female" />
+                                                        <f:selectItem itemValue="Other" itemLabel="Other" />
+                                                    </h:selectOneMenu>
+                                                </li>
+                                                <li>
+                                                    <h:outputLabel value=" Address:" for="userAddress" />
+                                                    <i class="fa fa-keyboard-o"></i><span class="required">*</span><br/>
+                                                    <h:inputText class="form-control" id="userAddress" value="#{userController.user.userAddress}" required="true" requiredMessage="Address is required."/>
+                                                    <h:message for="userAddress" class="text-orange" style="font-size: 11pt; font-style: italic; color: red;"/>
+                                                </li>
+                                                <li>
+                                                    <h:outputLabel value=" Phone:" for="userPhone" />
+                                                    <i class="fa fa-keyboard-o"></i><span class="required">*</span><br/>
+                                                    <h:inputText class="form-control" id="userPhone" value="#{userController.user.userPhone}" required="true" requiredMessage="Phone is required."/>
+                                                    <h:message for="userPhone" class="text-orange" style="font-size: 11pt; font-style: italic; color: red;"/>
+                                                </li>
+                                                <li>
+                                                    <h:outputLabel value=" Birthday: (dd/mm/yyyy)" for="userBirthday" />
+                                                    <i class="fa fa-calendar-o"></i><span class="required">*</span><br/>
+                                                    <h:inputText class="form-control" id="userBirthday" value="#{userController.user.userBirthday}" 
+                                                                 required="true" requiredMessage="The User Birthday is required." 
+                                                                 converterMessage="Must be in format: dd/MM/yyyy" >
+                                                        <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="Asia/Ho_Chi_Minh"/>
+                                                    </h:inputText>
+                                                    <h:message for="userBirthday" class="text-orange" style="font-size: 11pt; font-style: italic; color: red;"/>
+                                                </li>
+                                                <li>
+                                                    <h:outputLabel value=" Identity:" for="userIdentity" />
+                                                    <i class="fa fa-keyboard-o"></i><br/>
+                                                    <h:inputText class="form-control" id="userIdentity" value="#{userController.user.userIdentity}" />
+                                                    <h:message for="userIdentity" class="text-orange" style="font-size: 11pt; font-style:italic; color: red;"/>
+                                                </li>
+                                            </ul>
+                                            <p class="required">* Required Fields</p>
+                                            <div class="form-actions text-center pal">
+                                                <h:commandButton type="submit" value="Register" action="#{userController.registerCus()}" class="btn btn-sm btn-success" style="width: 100%" />
+                                                <!--<h:commandButton type="reset" value="Reset" class="btn btn-sm btn-cancel"><i class="fa fa-refresh fa-fw"></i></h:commandButton>-->
+                                                <br/><br/>
+                                                <!--<a class="forgot-word" href="#">Forgot Your Password?</a>-->
+                                                <!--                                                <h:link outcome="forgot_password?faces-redirect=true">Forgot Your Password?</h:link>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </h:form>
+                            </fieldset>
+                        </div>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                    </div>
+                </section>
+                <!-- Embed content here -->
+            </ui:define>
+
+        </ui:decorate>
+
+    </body>
+</html>

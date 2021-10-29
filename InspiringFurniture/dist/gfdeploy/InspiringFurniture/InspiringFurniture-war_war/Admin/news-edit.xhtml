@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./templates/adminTemplate.xhtml">
+
+            <ui:param name="breadcrumb_title" value="News &rArr; Edit"/>
+
+            <ui:param name="active_news_menu" value="active"/>
+
+            <ui:define name="content">
+
+                <div class="page-content">
+                    <div id="tab-general">
+                        <div class="row mbl">
+                            <div class="col-lg-12">
+                                
+                                <div class="panel panel-blue" style="background:#FFF;">
+                                    <div class="panel-heading" >
+
+                                        <h:link outcome="news-list?faces-redirect=true"><span class="btn btn-warning"><i class="fa fa-list fa-fw"/> List all</span></h:link>
+                                    </div>
+                                    <div class="panel-body pan">
+
+                                        <h:form enctype="multipart/form-data">
+                                            <div class="form-body pal">
+                                                <div class="form-group">
+                                                    <div class="input-icon right">
+                                                        <h:outputLabel value="News Title:" for="newsTitle" />
+                                                        <i class="fa fa-keyboard-o"></i>
+                                                        <h:inputText class="form-control" id="newsTitle" value="#{newsController.news.newsTitle}" required="true" requiredMessage="The News Title field is required."/>
+                                                        <h:message for="newsTitle" class="text-orange" style="font-size: 13pt; font-style: italic;"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="input-icon right">
+                                                        <h:outputLabel value="News Image:" for="newsImage" />
+                                                        <h:outputText class="form-control" value="#{newsController.news.newsImage}"/>
+                                                        <h:inputHidden id="newsImage" value="#{newsController.news.newsImage}"/>
+                                                        <h:inputFile class="form-control" 
+                                                                     value="#{newsController.uploadedFile}" id="uploadImage"
+                                                                     />
+                                                        <h:message for="uploadImage" class="text-orange" style="font-size: 13pt; font-style: italic;"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="input-icon right">
+                                                        <h:outputLabel value="News Intro:" for="newsIntro" />
+                                                        <h:message for="newsIntro" class="text-orange" style="font-size: 13pt; font-style: italic;"/>
+                                                        <i class="fa fa-keyboard-o"></i>
+                                                        <h:inputTextarea class="form-control" rows="4" cols="30" id="newsIntro" value="#{newsController.news.newsIntro}" required="true" requiredMessage="The News Intro field is required."/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="input-icon left">
+                                                        <h:outputLabel value="News Status:" for="newsStatus" />
+                                                        <h:outputLabel class="form-control">
+                                                            <h:selectBooleanCheckbox id="newsStatus" value="#{newsController.news.newsStatus}" />
+                                                            &nbsp; Active
+                                                        </h:outputLabel>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="input-icon right">
+                                                        <h:outputLabel value="News Content:" for="newsContent" />
+                                                        <h:message for="newsContent" class="text-orange" style="font-size: 13pt; font-style: italic;"/>
+                                                        <i class="fa fa-keyboard-o"></i>
+                                                        <h:inputTextarea class="form-control" rows="4" cols="30" id="newsContent" value="#{newsController.news.newsContent}"/>
+                                                    </div>
+                                                </div>
+
+                                                <hr/>
+
+
+                                                <div class="form-actions text-right pal">
+
+                                                    <h:commandButton type="submit" value="Save" action="#{newsController.edit()}" class="btn btn-primary" />
+
+                                                    <button type="reset" class="btn btn-cancel">
+                                                        <i class="fa fa-refresh fa-fw"></i>
+                                                        Reset
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </h:form>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
+

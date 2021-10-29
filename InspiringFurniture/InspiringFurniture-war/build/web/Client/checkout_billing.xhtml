@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./templates/clientTemplate.xhtml">
+
+            <ui:param name="active_member_menu" value="active"/>
+
+            <ui:define name="content">
+                <f:metadata>
+                    <f:viewAction action="#{userController.checkLoginCus('checkout_billing')}" />
+                </f:metadata>
+
+                <!-- Embed content here -->
+
+                <h:form>
+                    <section class="main-container col1-layout">
+                        <div class="main container">
+                            <div class="col-main">
+                                <div class="cart wow">
+                                    <h1>Billing list:</h1>
+                                    <div class="page-title">
+                                        <h2>Transaction information</h2>
+                                    </div>
+                                    <div class="table-responsive">
+
+                                        <!--<input type="hidden" value="Vwww7itR3zQFe86m" name="form_key" />-->
+                                        <fieldset>
+                                            <table class="data-table cart-table" id="shopping-cart-table">
+                                                <thead>
+                                                    <tr class="first last" style="background: lightgrey">
+                                                        <th>#</th>
+                                                        <th>Created Date</th>
+                                                        <th>Delivery Date</th>
+                                                        <th class="a-right">Delivery Address</th>
+                                                        <th class="a-center">Total</th>
+                                                        <th class="a-center">Status</th>
+                                                        <th class="text-center">Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <c:forEach var="new" items="#{transactionsController.listByUserId('last_new')}">
+                                                        <tr class="first odd" style="background: lightgreen">
+                                                            <td class="a-center" >
+                                                                <span style="color: yellow; background: red; font-weight: bold; font-size: small">new</span>
+<!--                                                                <span>
+                                                                    <img src="../resources/client/asset/images/new.gif" width="36%" />
+                                                                </span>-->
+                                                                
+                                                            </td>
+                                                            <td class="a-center">
+                                                                <h:outputText value="#{new.tranCreatedDate}">
+                                                                    <f:convertDateTime type="datetime" pattern="dd-MM-yyyy" timeZone="Asia/Ho_Chi_Minh"/>
+                                                                </h:outputText>
+                                                            </td>
+                                                            <td class="a-center">
+                                                                <h:outputText value="#{new.tranDeliveryDate}">
+                                                                    <f:convertDateTime type="datetime" pattern="dd-MM-yyyy" timeZone="Asia/Ho_Chi_Minh"/>
+                                                                </h:outputText>
+                                                            </td>
+                                                            <td class="a-center">
+                                                                #{new.tranDeliveryAddress}
+                                                            </td>
+                                                            <td class="a-right"><span class="cart-price"> <span
+                                                                        class="price">$#{new.tranTotal}</span> </span></td>
+
+                                                            <td class="a-right movewishlist Prices" id="Prices">
+                                                                <c:if test="#{new.tranStatus == 'pending'}">
+                                                                    <span class="label label-warning">
+                                                                        #{new.tranStatus}
+                                                                    </span>
+                                                                </c:if>
+                                                                <c:if test="#{new.tranStatus == 'delivered'}">
+                                                                    <span class="label label-success">
+                                                                        #{new.tranStatus}
+                                                                    </span>
+                                                                </c:if>
+                                                                
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <h:commandButton class="btn btn-success"
+                                                                                 value="View details" 
+                                                                                 action="#{transactionsController.view(new)}" />
+                                                            </td>
+                                                        </tr>
+                                                    </c:forEach>
+                                                    <c:forEach var="tran" items="#{transactionsController.listByUserId('all_no_last')}">
+                                                        <tr class="first even">
+                                                            <td class="a-center">
+                                                                #{tran.tranId}
+                                                            </td>
+                                                            <td class="a-center">
+                                                                <h:outputText value="#{tran.tranCreatedDate}">
+                                                                    <f:convertDateTime type="datetime" pattern="dd-MM-yyyy" timeZone="Asia/Ho_Chi_Minh"/>
+                                                                </h:outputText>
+                                                            </td>
+                                                            <td class="a-center">
+                                                                <h:outputText value="#{tran.tranDeliveryDate}">
+                                                                    <f:convertDateTime type="datetime" pattern="dd-MM-yyyy" timeZone="Asia/Ho_Chi_Minh"/>
+                                                                </h:outputText>
+                                                            </td>
+                                                            <td class="a-center">
+                                                                #{tran.tranDeliveryAddress}
+                                                            </td>
+                                                            <td class="a-right"><span class="cart-price"> <span
+                                                                        class="price">$#{tran.tranTotal}</span> </span></td>
+
+                                                            <td class="a-right movewishlist Prices" id="Prices">
+                                                                <c:if test="#{tran.tranStatus == 'pending'}">
+                                                                    <span class="label label-warning">
+                                                                        #{tran.tranStatus}
+                                                                    </span>
+                                                                </c:if>
+                                                                <c:if test="#{tran.tranStatus == 'delivered'}">
+                                                                    <span class="label label-success">
+                                                                        #{tran.tranStatus}
+                                                                    </span>
+                                                                </c:if>
+                                                                
+                                                            </td>
+                                                            <td class="a-center last text-center">
+                                                                <h:commandButton class="btn btn-success"
+                                                                                 value="View details" 
+                                                                                 action="#{transactionsController.view(tran)}" />
+                                                            </td>
+                                                        </tr>
+                                                    </c:forEach>                                                    
+                                                </tbody>
+                                            </table>
+                                        </fieldset>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </h:form>
+                <br/><br/>
+                <!-- Embed content here -->
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+
+</html>

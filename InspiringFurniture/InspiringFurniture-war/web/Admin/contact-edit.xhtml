@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./templates/adminTemplate.xhtml">
+
+            <ui:param name="breadcrumb_title" value="Contact &rArr; Edit"/>
+
+            <ui:param name="active_contact_menu" value="active"/>
+
+            <ui:define name="content">
+
+                <div class="page-content">
+                    <div id="tab-general">
+                        <div class="row mbl">
+                            <div class="col-lg-12">
+                                <div class="panel panel-blue" style="background:#FFF;">
+                                    <div class="panel-heading" >
+                                        <h:link outcome="contact-list?faces-redirect=true"><span class="btn btn-warning"><i class="fa fa-list fa-fw"/> List all</span></h:link>
+                                    </div>
+                                    <div class="panel-body pan">
+                                        <h:form enctype="multipart/form-data">
+                                            <div class="form-body pal">
+                                                <div class="form-group">
+                                                    <div class="input-icon right">
+                                                        <h:outputLabel value="Contact Email:" for="contEmail" />
+                                                        <i class="fa fa-keyboard-o"></i>
+                                                        <h:inputText readonly="true" class="form-control" id="contEmail" value="#{contactController.contact.contEmail}" required="true" requiredMessage="The Contact Email field is required."/>
+                                                        <h:message for="contEmail" class="text-orange" style="font-size: 13pt; font-style: italic;"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="input-icon right">
+                                                        <h:outputLabel value="Contact FullName:" for="contFullname" />
+                                                        <i class="fa fa-keyboard-o"></i>
+                                                        <h:inputText readonly="true" class="form-control" id="contFullname" value="#{contactController.contact.contFullname}" required="true" requiredMessage="The Contact FullName field is required."/>
+                                                        <h:message for="contFullname" class="text-orange" style="font-size: 13pt; font-style: italic;"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="input-icon right">
+                                                        <h:outputLabel value="Contact Company:" for="contCompany" />
+                                                        <i class="fa fa-keyboard-o"></i>
+                                                        <h:inputText readonly="true" class="form-control" id="contCompany" value="#{contactController.contact.contCompany}" required="true" requiredMessage="The Contact Company field is required."/>
+                                                        <h:message for="contCompany" class="text-orange" style="font-size: 13pt; font-style: italic;"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="input-icon right">
+                                                        <h:outputLabel value="Contact Phone:" for="contPhone" />
+                                                        <i class="fa fa-keyboard-o"></i>
+                                                        <h:inputText readonly="true" class="form-control" id="contPhone" value="#{contactController.contact.contPhone}" required="true" requiredMessage="The Contact Phone field is required."/>
+                                                        <h:message for="contPhone" class="text-orange" style="font-size: 13pt; font-style: italic;"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="input-icon right">
+                                                        <h:outputLabel value="Contact Address:" for="contAddress" />
+                                                        <i class="fa fa-keyboard-o"></i>
+                                                        <h:inputText readonly="true" class="form-control" id="contAddress" value="#{contactController.contact.contAddress}" required="true" requiredMessage="The Contact Address field is required."/>
+                                                        <h:message for="contAddress" class="text-orange" style="font-size: 13pt; font-style: italic;"/>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="form-group">
+                                                    <div class="input-icon right">
+                                                        <h:outputLabel value="Contact Comment:" for="contComment" />
+                                                        <h:message for="contComment" class="text-orange" style="font-size: 13pt; font-style: italic;"/>
+                                                        <i class="fa fa-keyboard-o"></i>
+                                                        <h:inputTextarea readonly="true" class="form-control" rows="4" cols="30" id="contComment" value="#{contactController.contact.contComment}" required="true" requiredMessage="The Contact Comment field is required."/>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="form-group">
+                                                    <div class="input-icon right">
+                                                        <h:outputLabel value="Status: " for="contStatus"/>
+                                                        &nbsp; &nbsp;
+                                                        <c:if test="#{contactController.contact.contStatus == true}">
+                                                            <span style="color: darkgreen">PROCESSED</span>
+                                                        </c:if>
+
+                                                        <c:if test="#{contactController.contact.contStatus == false}">
+                                                            <span style="color: red">WAITING</span>
+                                                        </c:if>
+                                                        &nbsp;
+                                                        Change:
+                                                        <h:selectOneMenu value="#{contactController.contStats}">
+                                                            <f:selectItem itemLabel="PROCESSED" itemValue="true"/>
+                                                            <f:selectItem itemLabel="WAITING" itemValue="false"/>
+                                                        </h:selectOneMenu>
+                                                    </div>
+                                                </div>
+                                                <hr/>
+
+                                                <div class="form-actions text-right pal">
+
+                                                    <h:commandButton type="submit" value="Save" action="#{contactController.edit()}" class="btn btn-primary" />
+
+                                                    <button type="reset" class="btn btn-cancel">
+                                                        <i class="fa fa-refresh fa-fw"></i>
+                                                        Reset
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </h:form>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
+

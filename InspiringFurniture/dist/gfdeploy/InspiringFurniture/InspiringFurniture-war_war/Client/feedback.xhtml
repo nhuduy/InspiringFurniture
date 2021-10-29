@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./templates/clientTemplate.xhtml">
+
+            <ui:param name="active_contact_menu" value="active"/>
+
+            <ui:define name="content">
+<!--                <f:metadata>
+                    <f:viewAction action="#{userController.checkLoginCus('feedback')}" />
+                </f:metadata>-->
+                <!-- main-container -->
+                <div class="main-container col2-right-layout">
+                    <div class="main container">
+                        <div class="row">
+                            <section class="col-main col-sm-12 wow">
+                                <div class="page-title">
+                                    <h2>Feedback</h2>
+                                </div>
+                                <div class="static-contain">
+                                    <p:growl id="facesMessage"/>
+                                    <h:form>
+                                        <fieldset class="group-select">
+                                            <p class="require"><em class="required">  * &nbsp;</em>Required Fields</p>
+                                            <ul>
+                                                <li id="billing-new-address-form">
+                                                    <fieldset>
+                                                        
+                                                        <ul>
+                                                            <li>
+                                                                <div class="input-box">
+                                                                    <label for="feedTitle"> Title <span class="required">*</span></label>
+                                                                    <br/>
+                                                                    <h:inputText id="feedTitle" value="#{feedbackController.feedback.feedTitle}" class="input-text " required="true" requiredMessage="Input require Title"/>
+                                                                    <br/>
+                                                                </div>
+                                                                <div class="input-box">
+                                                                    <label for="phone"> Telephone <span class="required">*</span></label>
+                                                                    <br/>
+                                                                    <h:inputText id="phone" value="#{feedbackController.feedback.phone}" class="input-text " required="true" requiredMessage="Input require Telephone"/>
+                                                                    <br/>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="customer-name">
+                                                                    <div class="input-box name-firstname">
+                                                                        <label for="fullname"> Full Name <span class="required">*</span></label>
+                                                                        <br/>
+                                                                        <h:inputText id="fullname" value="#{feedbackController.feedback.fullname}" class="input-text " required="true" requiredMessage="Input require Full Name"/>
+                                                                    </div>
+                                                                    <div class="input-box name-lastname">
+                                                                        <label for="email"> Email Address <span class="required">*</span> </label>
+                                                                        <br/>
+                                                                        <h:inputText id="email" value="#{feedbackController.feedback.email}" class="input-text validate-email" required="true" requiredMessage="Input require Email Address"/>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            
+                                                            <li>
+                                                                <label for="content"> Content <em class="required">*</em></label>
+                                                                <br/>
+                                                                <div style="float:none" class="">
+                                                                    <h:inputTextarea id="content" value="#{feedbackController.feedback.content}" class="required-entry input-text" 
+                                                                                     cols="5" rows="3" required="true" requiredMessage="Input require Content"/>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </fieldset>
+                                                </li>
+<!--                                                <p class="require"><em class="required"> &nbsp;&nbsp;&nbsp;&nbsp; *  </em>Required Fields</p>-->
+                                                <input type="text" name="hideit" id="hideit" value="" style="display:none !important;"/>
+
+                                                <div class="buttons-set col-sm-2">
+                                                    <h:commandButton value="Send" class="btn btn-success" action="#{feedbackController.addCusFeedback()}" style="width: 100%;"/>
+                                                </div>
+
+                                            </ul>
+                                        </fieldset>
+                                    </h:form>
+                                    <br/><br/><br/>
+                                </div>
+                            </section>
+                            <!--                                                                                                                                        <aside class="col-right sidebar col-sm-3 wow">
+                                                                                                                                                                        <div class="block block-company">
+                                                                                                                                                                            <div class="block-title">Company </div>
+                                                                                                                                                                            <div class="block-content">
+                                                                                                                                                                                <ol id="recently-viewed-items">
+                                                                                                                                                                                    <li class="item odd"><a href="#">About Us</a></li>
+                                                                                                                                                                                    <li class="item even"><a href="#">Sitemap</a></li>
+                                                                                                                                                                                    <li class="item  odd"><a href="#">Terms of Service</a></li>
+                                                                                                                                                                                    <li class="item even"><a href="#">Search Terms</a></li>
+                                                                                                                                                                                    <li class="item last"><strong>Contact Us</strong></li>
+                                                                                                                                                                                </ol>
+                                                                                                                                                                            </div>
+                                                                                                                                                                        </div>
+                                                                                                                                                                    </aside>-->
+                        </div>
+                    </div>
+                </div>
+                <!--End main-container --> 
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

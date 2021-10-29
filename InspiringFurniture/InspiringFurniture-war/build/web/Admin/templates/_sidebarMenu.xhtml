@@ -1,0 +1,95 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <nav id="sidebar" role="navigation" data-step="2" data-intro="Template has &lt;b&gt;many navigation styles&lt;/b&gt;"
+         data-position="right" class="navbar-default navbar-static-side">
+        <div class="sidebar-collapse menu-scroll">
+            <ul id="side-menu" class="nav">
+
+                <div class="clearfix"></div>
+                <li class="#{active_dashboard_menu}">
+                    <h:link outcome="index.xhtml">
+                        <i class="fa fa-tachometer fa-fw">
+                            <div class="icon-bg bg-orange"></div>
+                        </i>
+                        <span class="menu-title">Dashboard</span>
+                    </h:link>
+                </li>
+                <li class="#{active_news_menu}"> 
+                    <h:link outcome="news-list.xhtml">
+                        <i class="fa fa-file-text-o fa-fw">
+                            <div class="icon-bg bg-orange"></div>
+                        </i>
+                        <span class="menu-title">News</span>
+                    </h:link>
+                </li>
+                <li class="#{active_category_menu}"> 
+                    <h:link outcome="category-list.xhtml">
+                        <i class="fa fa-th-list fa-fw">
+                            <div class="icon-bg bg-orange"></div>
+                        </i>
+                        <span class="menu-title">Category</span>
+                    </h:link>
+                </li>
+                <li class="#{active_product_menu}"> 
+                    <h:link outcome="product-list.xhtml">
+                        <i class="fa fa-database fa-fw">
+                            <div class="icon-bg bg-orange"></div>
+                        </i>
+                        <span class="menu-title">Products</span>
+                    </h:link>
+                </li>
+                <li class="#{active_productimages_menu}"> 
+                    <h:link outcome="productimages-list.xhtml">
+                        <i class="fa fa-image fa-fw">
+                            <div class="icon-bg bg-orange"></div>
+                        </i>
+                        <span class="menu-title">Product images</span>
+                    </h:link>
+                </li>
+                <li class="#{active_promotion_menu}"> 
+                    <h:link outcome="promotion-list.xhtml">
+                        <i class="fa fa-gift fa-fw">
+                            <div class="icon-bg bg-orange"></div>
+                        </i>
+                        <span class="menu-title">Promotion</span>
+                    </h:link>
+                </li>
+                <li class="#{active_paymethod_menu}"> 
+                    <h:link outcome="paymethod-list.xhtml">
+                        <i class="fa fa-credit-card fa-fw">
+                            <div class="icon-bg bg-orange"></div>
+                        </i>
+                        <span class="menu-title">Pay method</span>
+                    </h:link>
+                </li>
+                <li class="#{active_contact_menu}"> 
+                    <h:link outcome="contact-list.xhtml">
+                        <i class="fa fa-comment-o fa-fw">
+                            <div class="icon-bg bg-orange"></div>
+                        </i>
+                        <span class="menu-title">Contact</span>
+                    </h:link>
+                </li>
+                <li class="#{active_feedback_menu}"> 
+                    <h:link outcome="feedback-list.xhtml">
+                        <i class="fa fa-rss fa-fw">
+                            <div class="icon-bg bg-orange"></div>
+                        </i>
+                        <span class="menu-title">Feedback</span>
+                    </h:link>
+                </li>
+                
+                <li class="#{active_user_menu}"> 
+                    <h:link outcome="user-list.xhtml">
+                        <i class="fa fa-users fa-fw">
+                            <div class="icon-bg bg-orange"></div>
+                        </i>
+                        <span class="menu-title">Users</span>
+                    </h:link>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</ui:composition>

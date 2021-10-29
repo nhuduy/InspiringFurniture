@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <link rel="shortcut icon" href="#"/>
+        <link rel="apple-touch-icon" href="#"/>
+        <link rel="apple-touch-icon" sizes="72x72" href="#"/>
+        <link rel="apple-touch-icon" sizes="114x114" href="#"/>
+
+        <!--Loading bootstrap css-->
+        <link type='text/css' rel='stylesheet' href='http://fonts.googleapis.com/css?family=Montserrat:400,700'/>
+        <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700"/>
+        <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,700,300"/>
+
+        <h:outputStylesheet name="admin/styles/jquery-ui-1.10.4.custom.min.css" />
+        <h:outputStylesheet name="admin/styles/font-awesome.min.css" />
+        <h:outputStylesheet name="admin/styles/simple-line-icons.css" />
+        <h:outputStylesheet name="admin/styles/bootstrap.min.css" />
+        <h:outputStylesheet name="admin/styles/animate.css" />
+        <h:outputStylesheet name="admin/styles/main.css" />
+        <h:outputStylesheet name="admin/styles/style-responsive.css" />
+        <h:outputStylesheet name="admin/styles/zabuto_calendar.min.css" />
+        <h:outputStylesheet name="admin/styles/pace.css"  />
+        <h:outputStylesheet name="admin/styles/jquery.news-ticker.css" />
+
+        <!--        
+        <h:outputStylesheet name="css/default.css"  />
+        <h:outputStylesheet name="css/cssLayout.css"  />
+        -->
+        <title>Admin | Inspiring</title>
+    </h:head>
+
+    <h:body>
+        <div>
+            <!--BEGIN BACK TO TOP-->
+            <a id="totop" href="#"><i class="fa fa-angle-up"></i></a>
+            <!--END BACK TO TOP-->
+
+            <!--BEGIN TOPBAR-->
+            <ui:insert name="topbar">
+                <ui:include src="_topbar.xhtml"/>
+            </ui:insert>
+            <!--END TOPBAR-->
+
+            <div id="wrapper">
+                <!--BEGIN SIDEBAR MENU-->
+                <ui:insert name="sidebar">
+                    <ui:include src="_sidebarMenu.xhtml"/>
+                </ui:insert>
+                <!--END SIDEBAR MENU-->
+
+                <!--BEGIN CHAT FORM-->
+                <ui:insert name="chatform">
+                    <ui:include src="_chatform.xhtml"/>
+                </ui:insert>
+                <!--END CHAT FORM-->
+
+                <!--BEGIN PAGE WRAPPER-->
+                <div id="page-wrapper">
+                    <!--BEGIN TITLE & BREADCRUMB PAGE-->
+                    <ui:insert name="breadcrumb">
+                        <ui:include src="_breadcrumb.xhtml"/>
+                    </ui:insert>
+                    <!--END TITLE & BREADCRUMB PAGE-->
+
+                    <div class="page-content">
+                        <div id="tab-general">
+                            <p:growl autoUpdate="false"/>
+                            <c:choose>
+                                <c:when test="#{admin_loged == null}">
+                                    <h1 style="color: red">Permission Denied! <h:link outcome="login?faces-redirect=true">Click here to Login!</h:link></h1>
+                                </c:when>
+                                <c:otherwise>
+                                    <!--BEGIN CONTENT-->
+                                    <ui:insert name="content">
+                                        Contents here
+                                    </ui:insert>
+                                    <!--END CONTENT-->
+                                </c:otherwise>
+                            </c:choose>
+
+                        </div>
+                    </div>
+                    <!--BEGIN FOOTER-->
+                    <ui:insert name="footer">
+                        <ui:include src="_footer.xhtml"/>
+                    </ui:insert>
+                    <!--END FOOTER-->
+                </div>
+                <!--END PAGE WRAPPER-->
+            </div>
+        </div>
+
+
+
+        <!-- JAVASCRIPT -->
+        <h:outputScript name="admin/script/jquery-1.10.2.min.js"  />
+        <h:outputScript name="admin/script/jquery-migrate-1.2.1.min.js"  />
+        <h:outputScript name="admin/script/jquery-ui.js"  />
+        <h:outputScript name="admin/script/bootstrap.min.js"  />
+        <h:outputScript name="admin/script/bootstrap-hover-dropdown.js"  />
+        <h:outputScript name="admin/script/html5shiv.js"  />
+        <h:outputScript name="admin/script/respond.min.js"  />
+        <h:outputScript name="admin/script/jquery.metisMenu.js"  />
+        <h:outputScript name="admin/script/jquery.slimscroll.js"  />
+        <h:outputScript name="admin/script/jquery.cookie.js"  />
+        <h:outputScript name="admin/script/icheck.min.js"  />
+        <h:outputScript name="admin/script/custom.min.js"  />
+        <h:outputScript name="admin/script/jquery.news-ticker.js"  />
+        <h:outputScript name="admin/script/jquery.menu.js"  />
+        <h:outputScript name="admin/script/pace.min.js"  />
+        <h:outputScript name="admin/script/holder.js"  />
+        <h:outputScript name="admin/script/responsive-tabs.js"  />
+        <h:outputScript name="admin/script/jquery.flot.js"  />
+        <h:outputScript name="admin/script/jquery.flot.categories.js"  />
+        <h:outputScript name="admin/script/jquery.flot.pie.js"  />
+        <h:outputScript name="admin/script/jquery.flot.tooltip.js"  />
+        <h:outputScript name="admin/script/jquery.flot.fillbetween.js"  />
+        <h:outputScript name="admin/script/jquery.flot.stack.js"  />
+        <h:outputScript name="admin/script/jquery.flot.spline.js"  />
+        <h:outputScript name="admin/script/zabuto_calendar.min.js"  />
+        <h:outputScript name="admin/script/index.js"  />
+
+        <!--LOADING SCRIPTS FOR CHARTS-->
+        <h:outputScript name="admin/script/highcharts.js"  />
+        <h:outputScript name="admin/script/data.js"  />
+        <h:outputScript name="admin/script/drilldown.js"  />
+        <h:outputScript name="admin/script/exporting.js"  />
+        <h:outputScript name="admin/script/highcharts-more.js"  />
+        <h:outputScript name="admin/script/charts-highchart-pie.js"  />
+        <h:outputScript name="admin/script/charts-highchart-more.js"  />
+        
+        <h:outputScript name="admin/script/jquery.nestable.js" />
+        <h:outputScript name="admin/script/ui-nestable-list.js" />
+
+        <!--CORE JAVASCRIPT-->
+        <h:outputScript name="admin/script/main.js"  />
+
+        <script>        (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })
+
+            function hidedivmessage() {
+                document.getElementById("Message").style.display = "none";
+            }
+            setTimeout("hidedivmessage()", 3000);
+        </script>
+
+    </h:body>
+
+</html>

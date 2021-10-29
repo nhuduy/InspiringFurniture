@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+        <ui:decorate template="./templates/clientTemplate.xhtml">
+
+            <ui:param name="active_home_menu" value=""/>
+            <ui:param name="active_page_menu" value="active"/>
+
+            <ui:define name="content">
+                <f:metadata>
+                    <f:viewAction action="#{userController.checkLoginCus('billing_details')}" />
+                </f:metadata>
+
+                <!-- Embed content here -->
+                <h:form>
+                    <section class="main-container col1-layout">
+                        <div class="main container">
+                            <div class="col-main">
+                                <div class="cart wow">
+
+                                    <div class="page-title">
+                                        <h2>Order information</h2>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <fieldset>
+                                            <table class="data-table cart-table" id="shopping-cart-table">
+                                                <thead>
+                                                    <tr class="first last">
+                                                        <th rowspan="1" class="a-center">Image</th>
+                                                        <th rowspan="1"><span class="nobr">Product Name</span></th>
+                                                        <th rowspan="1"></th>
+                                                        <th colspan="1" class="a-center">
+                                                            <span class="nobr">Unit Price</span>
+                                                        </th>
+                                                        <th class="a-center" rowspan="1">Quantity</th>
+<!--                                                        <th colspan="1" class="a-center">Status</th>-->
+                                                        <th class="a-center" rowspan="1">&nbsp;</th>
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                    <c:forEach var="item" items="#{transactionsController.listByTranId()}">
+                                                        <tr class="first odd">
+                                                            <td class="image">
+                                                                <a class="product-image" title="Sample Product"
+                                                                   href="#">
+                                                                    <h:graphicImage width="75" name="client/products-images/#{productImageController.getImageByProdId(item.prodId.prodId)}" />
+                                                                </a>
+                                                            </td>
+                                                            <td>
+                                                                <h2 class="product-name"> <a
+                                                                        href="#">#{item.prodId.prodName}</a>
+                                                                </h2>
+                                                            </td>
+                                                            <td class="a-center">
+                                                                <!--                                                                <a title="Edit item parameters"
+                                                                                                                                                    class="edit-bnt" href="#configure/id/15945/"></a>-->
+                                                            </td>
+                                                            <td class="a-right">
+                                                                <span class="cart-price">
+                                                                    <span class="price">$#{item.prodId.prodPrice}</span> 
+                                                                </span>
+                                                            </td>
+                                                            <td class="a-center movewishlist">
+                                                                <h:inputText maxlength="12" class="input-text qty" title="Qty" size="4" value="#{item.quantity}" readonly="true"/>
+                                                            </td>
+                                                            <td class="a-center last">
+
+                                                            </td>
+                                                        </tr>
+                                                    </c:forEach>
+
+                                                </tbody>
+                                            </table>
+                                        </fieldset>
+
+                                    </div>
+
+                                    <!-- BEGIN CART COLLATERALS -->
+                                    <div class="cart-collaterals row">
+                                        <div class="col-sm-6"></div>
+                                        <div class="col-sm-6">                                            
+                                            <h:button class="btn btn-success" value="Back to BILLING LIST" outcome="checkout_billing?faces-redirect=true"
+                                                      style="width: 100%;" />
+                                        </div>
+
+                                    </div>
+
+                                    <!--cart-collaterals-->
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+                </h:form>
+                <!-- Embed content here -->
+
+
+            </ui:define>
+
+        </ui:decorate>
+        <script type='text/javascript'>
+            jQuery(document).ready(function ()
+            {
+                jQuery('td').each(function ()
+                {
+                    var totalprices = 0;
+                    jQuery(this).find('.Prices').each(function ()
+                    {
+                        var prices = $(this).text();
+                        if (prices.length !== 0)
+                        {
+                            totalprices += parseFloat(prices);
+                        }
+                    });
+                    jQuery(this).find('#TotalPrices').html(totalprices.toString());
+                });
+
+            });
+
+
+        </script>
+    </body>
+
+</html>

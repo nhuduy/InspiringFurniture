@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./templates/adminTemplate.xhtml">
+
+            <ui:param name="breadcrumb_title" value="Category &rArr; Create"/>
+
+            <ui:param name="active_category_menu" value="active"/>
+
+            <ui:define name="content">
+
+                <div class="page-content">
+                    <div id="tab-general">
+                        <div class="row mbl">
+                            <div class="col-lg-12">
+                                <div class="tab-pane active" id="horizontal-form">
+                                    <h1><h:outputText value="Uploading file"/></h1>
+                                    <h:form class="form-horizontal" enctype="multipart/form-data">
+                                        <div class="form-group">
+                                            <h:outputLabel value="Product image:" for="image" class="col-sm-2 control-label" />
+                                            <div class="col-sm-8">
+                                                <h:inputFile class="form-control1" id="image" value="#{categoryController.uploadedFile}" title="Product image" required="true" requiredMessage="The Product image field is required."/>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <p class="help-block"></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-sm-2">
+                                                <p class="help-block"></p>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <h:commandButton type="submit" value="Upload" action="#{categoryController.saveFile()}" class="btn btn-primary"/>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <p class="help-block"></p>
+                                            </div>
+                                        </div>
+                                    </h:form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </ui:define>
+
+        </ui:composition>
+    </body>
+</html>
+

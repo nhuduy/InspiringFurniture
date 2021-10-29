@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./templates/clientTemplate.xhtml">
+            <ui:param name="active_member_menu" value="active"/>
+
+            <ui:define name="content">
+                <!-- main-container -->
+                <div class="main-container col2-right-layout">
+                    <div class="main container">
+                        <div class="row">
+                            <div class="col-main col-sm-2 wow"></div>
+                            <section class="col-main col-sm-8 wow">
+                                <h:form>
+                                    <div class="a-center"><h2>Customers Profile</h2>
+                                        <div class="content">
+                                            <ul class="form-list">
+                                                <li>
+                                                    <h:outputLabel value=" Email:" for="userEmail" />
+                                                    <i class="fa fa-envelope-o"></i><span class="required">*</span><br/>
+                                                    <h:inputText class="form-control" id="userEmail" value="#{userController.user.userEmail}" readonly="true"/>
+                                                </li>
+                                                <li>
+                                                    <h:outputLabel value=" Password:" for="userPassword" />
+                                                    <i class="fa fa-keyboard-o"></i><span class="required">*</span><br/>
+                                                    <h:outputText value="********" class="form-control" />
+                                                    <h:inputHidden class="form-control" id="userPassword" value="#{userController.user.userPassword}" />
+                                                </li>
+                                                <li>
+                                                    <h:outputLabel value=" Full name:" for="userFullname" />
+                                                    <i class="fa fa-keyboard-o"><span class="required">*</span></i><br/>
+                                                    <h:inputText class="form-control" id="userFullname" value="#{userController.user.userFullname}" required="true" requiredMessage="Fullname is required."/>
+                                                    <h:message for="userFullname" class="text-orange" style="font-size: 11pt; font-style: italic; color: red;"/>
+                                                </li>
+                                                <li>
+                                                    <h:outputLabel value=" Gender:" for="userGender" />
+                                                    <i class="fa fa-keyboard-o"><span class="required">*</span></i>
+                                                    <h:message for="userGender" class="text-orange" style="font-size: 11pt; font-style: italic; color: red;"/>
+                                                    <h:selectOneMenu class="form-control" id="userGender" value="#{userController.user.userGender}" style="width: 100%">
+                                                        <f:selectItem itemValue="Male" itemLabel="Male" />
+                                                        <f:selectItem itemValue="Female" itemLabel="Female" />
+                                                        <f:selectItem itemValue="Other" itemLabel="Other" />
+                                                    </h:selectOneMenu>
+                                                </li>
+                                                <li>
+                                                    <h:outputLabel value=" Address:" for="userAddress" />
+                                                    <i class="fa fa-keyboard-o"></i><span class="required">*</span><br/>
+                                                    <h:inputText class="form-control" id="userAddress" value="#{userController.user.userAddress}" required="true" requiredMessage="Address is required."/>
+                                                    <h:message for="userAddress" class="text-orange" style="font-size: 11pt; font-style: italic; color: red;"/>
+                                                </li>
+                                                <li>
+                                                    <h:outputLabel value=" Phone:" for="userPhone" />
+                                                    <i class="fa fa-keyboard-o"></i><span class="required">*</span><br/>
+                                                    <h:inputText class="form-control" id="userPhone" value="#{userController.user.userPhone}" required="true" requiredMessage="Phone is required."/>
+                                                    <h:message for="userPhone" class="text-orange" style="font-size: 11pt; font-style: italic; color: red;"/>
+                                                </li>
+                                                <li>
+                                                    <h:outputLabel value=" Birthday: (DD/MM/YYYY)" for="userBirthday" />
+                                                    <i class="fa fa-calendar-o"></i><span class="required">*</span><br/>
+                                                    <h:inputText class="form-control" id="userBirthday" value="#{userController.user.userBirthday}" 
+                                                                 required="true" requiredMessage="The User Birthday is required." 
+                                                                 converterMessage="Must be in format: DD/MM/YYYY">
+                                                        <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="Asia/Ho_Chi_Minh"/>
+                                                    </h:inputText>
+                                                    <h:message for="userBirthday" class="text-orange" style="font-size: 11pt; font-style: italic; color: red;"/>
+                                                </li>
+                                                <li>
+                                                    <h:outputLabel value=" Identity:" for="userIdentity" />
+                                                    <i class="fa fa-keyboard-o"></i><br/>
+                                                    <h:inputText class="form-control" id="userIdentity" value="#{userController.user.userIdentity}" />
+                                                    <h:message for="userIdentity" class="text-orange" style="font-size: 11pt; font-style:italic; color: red;"/>
+                                                </li>
+                                            </ul>
+                                            <p class="required">* Required Fields</p>
+                                            <div class="col-sm-8"></div>
+                                            <div class="form-actions text-center pal col-sm-4">
+                                                <h:commandButton type="submit" value="Update" action="#{userController.updateProfile()}" class="btn btn-sm btn-success" style="width: 100%" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </h:form>
+                                <br/><br/><br/>
+                            </section>
+                            
+                        </div>
+                    </div>
+                </div>
+                <!--End main-container --> 
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

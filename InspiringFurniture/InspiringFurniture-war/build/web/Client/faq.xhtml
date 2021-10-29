@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./templates/clientTemplate.xhtml">
+            
+            <ui:param name="active_faq_menu" value="active"/>
+            
+            <ui:define name="content">
+                <!-- Embed content here -->
+                <section class="main-container col1-layout">
+                    <div class="main container">
+                      <div class="col-main">
+                        <div class="cart wow">
+                          <div class="page-title">
+                            <h2>Frequently Asked Questions</h2>
+                          </div>
+                          <div class="panel-group accordion-faq" id="faq-accordion">
+                            <div class="panel">
+                              <div class="panel-heading"> <a data-toggle="collapse" data-parent="#faq-accordion" href="#question1"> <span class="arrow-down">+</span> <span class="arrow-up">&#8211;</span> Do you hold stock of all products?</a> </div>
+                              <div id="question1" class="panel-collapse collapse in">
+                                  <div class="panel-body">All products listed are usually in stock. <br></br><br></br> Not there? No problem - request a notification on that product’s page and we’ll let you know if and when it’s back. </div>
+                              </div>
+                            </div>
+                            
+                            <div class="panel">
+                              <div class="panel-heading"> <a data-toggle="collapse" data-parent="#faq-accordion" href="#question3" class="collapsed"> <span class="arrow-down">+</span> <span class="arrow-up">&#8211;</span> Do prices include VAT?</a> </div>
+                              <div id="question3" class="panel-collapse collapse">
+                                <div class="panel-body"> Yes - all prices shown include VAT.</div>
+                              </div>
+                            </div>
+                            
+                            <div class="panel">
+                              <div class="panel-heading"> <a data-toggle="collapse" data-parent="#faq-accordion" href="#question2" class="collapsed"> <span class="arrow-down">+</span> <span class="arrow-up">&#8211;</span> Do prices include delivery?</a> </div>
+                              <div id="question2" class="panel-collapse collapse">
+                                  <div class="panel-body">Delivery is free for all products in Vietnam (excluding Highlands and islands.) <br></br><br></br>We deliver wherever we can for an additional cost - please do get in touch for a quote or visit one of our European websites (you can find them at the top of our homepage.) </div>
+                              </div>
+                            </div>
+                            <div class="panel">
+                              <div class="panel-heading"> <a data-toggle="collapse" data-parent="#faq-accordion" href="#question5" class="collapsed"> <span class="arrow-down">+</span> <span class="arrow-up">&#8211;</span> Can you deliver goods to a specific room of my house?</a> </div>
+                              <div id="question5" class="panel-collapse collapse">
+                                  <div class="panel-body"> We can.<br></br><br></br>Larger items can be delivered directly to a room of your choice (smaller items will be delivered to your doorstep.) </div>
+                              </div>
+                            </div>
+                            <div class="panel">
+                              <div class="panel-heading"> <a data-toggle="collapse" data-parent="#faq-accordion" href="#question4" class="collapsed"> <span class="arrow-down">+</span> <span class="arrow-up">&#8211;</span> How accurate is My Furniture’s photography?</a> </div>
+                              <div id="question4" class="panel-collapse collapse">
+                                  <div class="panel-body"> We take great care in capturing representative imagery of all the finishes and fabrics we use.<br></br><br></br>Sometimes, due to individual computer display settings, colour variation and individual lighting conditions, it is difficult to ensure that what you see on your monitor will be identical to the actual product…<br></br><br></br>That’s why we’re more than happy to send you swatches so you’re sure.<br></br><br></br>(My Furniture cannot accept responsibility if there is a slight difference in colour between actual products and images on the website – so when it comes to swatches, please do ask away.)</div>
+                              </div>
+                            </div>
+                            <div class="panel">
+                              <div class="panel-heading"> <a data-toggle="collapse" data-parent="#faq-accordion" href="#question6" class="collapsed"> <span class="arrow-down">+</span> <span class="arrow-up">&#8211;</span> When will my goods be delivered?</a> </div>
+                              <div id="question6" class="panel-collapse collapse">
+                                <div class="panel-body"> Most products are delivered within 72 hours. Heavier and bespoke items are usually delivered within a week but can take up to a month. Please look at individual product listings for further information</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                <!-- Embed content here -->
+            </ui:define>
+        </ui:composition>
+
+    </body>
+</html>

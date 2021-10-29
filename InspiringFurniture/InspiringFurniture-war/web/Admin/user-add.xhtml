@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./templates/adminTemplate.xhtml">
+
+            <ui:param name="breadcrumb_title" value="Users &rArr; Create"/>
+
+            <ui:param name="active_user_menu" value="active"/>
+
+            <ui:define name="content">
+
+                <div class="page-content">
+                    <div id="tab-general">
+                        <div class="row mbl">
+                            <div class="col-lg-12">
+                                <div class="panel panel-blue" style="background:#FFF;">
+                                    <div class="panel-heading" >
+                                        <h:link outcome="user-list?faces-redirect=true"><span class="btn btn-warning"><i class="fa fa-list fa-fw"/> List all</span></h:link>
+                                    </div>
+                                    <div class="panel-body pan">
+                                        <h:form enctype="multipart/form-data">
+                                            <div class="form-body pal">
+                                                <div class="form-group">
+                                                    <div class="input-icon right">
+                                                        <h:outputLabel value="User Email:" for="userEmail" />
+                                                        <i class="fa fa-envelope-o"></i>
+                                                        <h:inputText class="form-control" id="userEmail" value="#{userController.user.userEmail}" required="true" requiredMessage="The User Email field is required."/>
+                                                        <h:message for="userEmail" class="text-orange" style="font-size: 13pt; font-style: italic;"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="input-icon right">
+                                                        <h:outputLabel value="User Password:" for="userPassword" />
+                                                        <i class="fa fa-keyboard-o"></i>
+                                                        <h:inputSecret class="form-control" id="userPassword" value="#{userController.user.userPassword}" required="true" requiredMessage="The User Password field is required."/>
+                                                        <h:message for="userPassword" class="text-orange" style="font-size: 13pt; font-style: italic;"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="input-icon right">
+                                                        <h:outputLabel value="User Full name:" for="userFullname" />
+                                                        <i class="fa fa-keyboard-o"></i>
+                                                        <h:inputText class="form-control" id="userFullname" value="#{userController.user.userFullname}" required="true" requiredMessage="The User Fullname field is required."/>
+                                                        <h:message for="userFullname" class="text-orange" style="font-size: 13pt; font-style: italic;"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="input-icon right">
+                                                        <h:outputLabel value="User Gender:" for="userGender" />
+                                                        <i class="fa fa-keyboard-o"></i>
+                                                        <h:message for="userGender" class="text-orange" style="font-size: 13pt; font-style: italic;"/>
+                                                        <h:selectOneRadio class="form-control" id="userGender" value="#{userController.user.userGender}">
+                                                            <f:selectItem itemValue="Male" itemLabel="Male" />
+                                                            <f:selectItem itemValue="Female" itemLabel="Female" />
+                                                        </h:selectOneRadio>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="input-icon right">
+                                                        <h:outputLabel value="User Address:" for="userAddress" />
+                                                        <i class="fa fa-keyboard-o"></i>
+                                                        <h:inputText class="form-control" id="userAddress" value="#{userController.user.userAddress}" required="true" requiredMessage="The User Address field is required."/>
+                                                        <h:message for="userAddress" class="text-orange" style="font-size: 13pt; font-style: italic;"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="input-icon right">
+                                                        <h:outputLabel value="User Phone:" for="userPhone" />
+                                                        <i class="fa fa-keyboard-o"></i>
+                                                        <h:inputText class="form-control" id="userPhone" value="#{userController.user.userPhone}" required="true" requiredMessage="The User Phone field is required."/>
+                                                        <h:message for="userPhone" class="text-orange" style="font-size: 13pt; font-style: italic;"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="input-icon right">
+                                                        <h:outputLabel value="User Birthday: (dd/mm/yyyy)" for="userBirthday" />
+                                                        <i class="fa fa-calendar-o"></i>
+                                                        <h:inputText class="form-control" id="userBirthday" value="#{userController.user.userBirthday}" 
+                                                                     required="true" requiredMessage="The User Birthday is required." 
+                                                                     converterMessage="Must be in format: dd/MM/yyyy">
+                                                            <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="Asia/Ho_Chi_Minh"/>
+                                                        </h:inputText>
+                                                        <h:message for="userBirthday" class="text-orange" style="font-size: 13pt; font-style: italic;"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="input-icon right">
+                                                        <h:outputLabel value="User Identity:" for="userIdentity" />
+                                                        <i class="fa fa-keyboard-o"></i>
+                                                        <h:inputText class="form-control" id="userIdentity" value="#{userController.user.userIdentity}" />
+                                                        <h:message for="userIdentity" class="text-orange" style="font-size: 13pt; font-style: italic;"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="input-icon left">
+                                                        <h:outputLabel class="form-control">
+                                                            <h:selectBooleanCheckbox id="userAdmin" value="#{userController.user.userAdmin}"/>
+                                                            &nbsp; Administrator
+                                                        </h:outputLabel>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="input-icon left">
+                                                        <h:outputLabel class="form-control">
+                                                            <h:selectBooleanCheckbox id="userStatus" value="#{userController.user.userStatus}"/>
+                                                            &nbsp; Active
+                                                        </h:outputLabel>
+                                                    </div>
+                                                </div>
+
+                                                <hr/>
+
+                                                <div class="form-actions text-right pal">
+
+                                                    <h:commandButton type="submit" value="Create" action="#{userController.add()}" class="btn btn-primary" />
+
+                                                    <button type="reset" class="btn btn-cancel">
+                                                        <i class="fa fa-refresh fa-fw"></i>
+                                                        Reset
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </h:form>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
+

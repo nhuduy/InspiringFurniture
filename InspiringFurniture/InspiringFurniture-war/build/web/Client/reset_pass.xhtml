@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./templates/clientTemplate.xhtml">
+
+            <ui:define name="content">
+                <p:growl id="facesMessage"/>
+                <!-- Embed content here -->
+                <section class="main-container col1-layout">
+                    <div class="main container">
+                        <div class="account-login">
+                            <div class="col-sm-2"></div>
+                            <fieldset>
+                                
+                                <h:form>
+                                    
+                                    <div class="col-sm-8">
+                                        <h3>Reset password</h3>
+                                        <div class="content">
+                                            <p>Please fill right information..</p>
+                                            <ul class="form-list">
+                                                <li>
+                                                    <h:outputLabel value=" Email:" for="userEmail" />
+                                                    <i class="fa fa-envelope-o"></i><span class="required">*</span><br/>
+                                                    <h:inputText class="form-control" id="userEmail" value="#{userController.userEmail}" required="true" requiredMessage="Email is required."/>
+                                                    <h:message for="userEmail" class="text-orange" style="font-size: 11pt; font-style: italic; color: red;"/>
+                                                </li>
+                                                <li>
+                                                    <h:outputLabel value=" Phone:" for="userPhone" />
+                                                    <i class="fa fa-keyboard-o"></i><span class="required">*</span><br/>
+                                                    <h:inputText class="form-control" id="userPhone" value="#{userController.userPhone}" required="true" requiredMessage="Phone is required."/>
+                                                    <h:message for="userPhone" class="text-orange" style="font-size: 11pt; font-style: italic; color: red;"/>
+                                                </li>
+                                                <li>
+                                                    <h:outputLabel value=" New Password:" for="userPassword" />
+                                                    <i class="fa fa-keyboard-o"></i><span class="required">*</span><br/>
+                                                    <h:inputSecret class="form-control" id="userPassword" value="#{userController.userPassword}" required="true" requiredMessage="Password is required."/>
+                                                    <h:message for="userPassword" class="text-orange" style="font-size: 11pt; font-style: italic; color: red;"/>
+                                                </li>
+                                                <li>
+                                                    <h:outputLabel value=" Confirm New Password:" for="confirmPassword" />
+                                                    <i class="fa fa-keyboard-o"></i><span class="required">*</span><br/>
+                                                    <h:inputSecret class="form-control" id="confirmPassword" value="#{userController.confirmPassword}" required="true" requiredMessage="Confirm Password is required."/>
+                                                    <h:message for="confirmPassword" class="text-orange" style="font-size: 11pt; font-style: italic; color: red;"/>
+                                                </li>
+                                                
+                                            </ul>
+                                            <p class="required">* Required Fields</p>
+                                            <div class="form-actions text-center pal">
+                                                <h:commandButton type="submit" value="Renew password" action="#{userController.resetCusPassword()}" class="btn btn-sm btn-success" style="width: 100%" />
+                                                <!--<h:commandButton type="reset" value="Reset" class="btn btn-sm btn-cancel"><i class="fa fa-refresh fa-fw"></i></h:commandButton>-->
+                                                <br/><br/>
+                                                <!--<a class="forgot-word" href="#">Forgot Your Password?</a>-->
+                                                <!--                                                <h:link outcome="forgot_password?faces-redirect=true">Forgot Your Password?</h:link>-->
+                                                
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </h:form>
+                            </fieldset>
+                        </div>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                    </div>
+                </section>
+                <!-- Embed content here -->
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

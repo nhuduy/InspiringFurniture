@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <!--LEFT ASIDE-->
+    <aside class="col-left sidebar col-sm-3 col-xs-12 col-sm-pull-9 wow">
+        
+        <!-- BOX-CATEGORY -->
+        <div class="side-nav-categories">
+            <div class="block-title"> Categories </div>
+            <!--block-title--> 
+            <div class="box-content box-category">
+                <ul>
+                    <c:forEach var="cat" items="#{categoryController.listAll()}">
+                        <!-- Category level 0-->
+                        <li>  
+                            <h5>
+                                <strong>#{cat.cateName}</strong>
+                            </h5>
+                        </li>
+                    </c:forEach>
+                </ul>
+            </div>
+        </div>
+        <!-- END BOX-CATEGORY -->
+        
+        <!-- SHOP BY -->
+<!--        <div class="block block-layered-nav">
+            <div class="block-title"><span>Shop By</span></div>
+            <div class="block-content">
+                <p class="block-subtitle">Shopping Options</p>
+                <dl id="narrow-by-list">
+                    <dt class="odd">Price</dt>
+                    <dd class="odd">
+                        <ol>
+                            <li> <a href="#"><span class="price">$0.00</span> - <span class="price">$99.99</span></a> (6) </li>
+                            <li> <a href="#"><span class="price">$100.00</span> and above</a> (6) </li>
+                        </ol>
+                    </dd>
+                    <dt class="odd">Color</dt>
+                    <dd class="odd">
+                        <ol>
+                            <li> <a href="#">Green</a> (1) </li>
+                            <li> <a href="#">White</a> (5) </li>
+                            <li> <a href="#">Black</a> (5) </li>
+                            <li> <a href="#">Gray</a> (4) </li>
+                            <li> <a href="#">Dark Gray</a> (3) </li>
+                            <li> <a href="#">Blue</a> (1) </li>
+                        </ol>
+                    </dd>
+                </dl>
+            </div>
+        </div>-->
+        <!-- END SHOP BY -->
+        
+        <!-- MY CART -->
+<!--        <div class="block block-cart">
+            <div class="block-title"><span>My Cart</span></div>
+            <div class="block-content">
+                <div class="summary">
+                    <p class="amount">There are <a href="#">2 items</a> in your cart.</p>
+                    <p class="subtotal"> <span class="label">Cart Subtotal:</span> <span class="price">$27.99</span> </p>
+                </div>
+                <div class="ajax-checkout">
+                    <button type="submit" title="Submit" class="button button-checkout"><span>Checkout</span></button>
+                </div>
+                <p class="block-subtitle">Recently added item(s) </p>
+                <ul>
+                    <li class="item"> <a class="product-image" title="Fisher-Price Bubble Mower" href="#"><h:graphicImage width="80" alt="Fisher-Price Bubble Mower" name="client/products-images/p1.jpg"/></a>
+                        <div class="product-details">
+                            <div class="access"> <a class="btn-remove1" title="Remove This Item" href="#"> <span class="icon"></span> Remove </a> </div>
+                            <p class="product-name"> <a href="#">Skater Dress In Leaf Print Grouped Product</a> </p>
+                            <strong>1</strong> x <span class="price">$19.99</span> </div>
+                    </li>
+                    <li class="item last"> <a class="product-image" title="Prince Lionheart Jumbo Toy Hammock" href="#"><h:graphicImage width="80" alt="Prince Lionheart Jumbo Toy Hammock" name="client/products-images/p48.jpg"/></a>
+                        <div class="product-details">
+                            <div class="access"> <a class="btn-remove1" title="Remove This Item" href="#"> <span class="icon"></span> Remove </a> </div>
+                            <p class="product-name"> <a href="#"> Sample Fashion Product Prince Lionheart </a> </p>
+                            <strong>1</strong> x <span class="price">$8.00</span> 
+                            access clearfix 
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>-->
+        <!-- END MY CART -->
+
+    </aside>
+    <!--END LEFT ASIDE-->
+
+</ui:composition>
+

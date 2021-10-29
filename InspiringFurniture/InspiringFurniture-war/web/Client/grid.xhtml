@@ -1,0 +1,175 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./templates/clientTemplate.xhtml">
+
+            <ui:param name="active_product_menu" value="active"/>
+
+            <ui:define name="content">
+
+                <!-- BEGIN GRID-PRODUCTS -->
+                <h:form>
+                <section class="main-container col2-left-layout">
+                    <div class="main container">
+                        <div class="row">
+
+                            <!--MAIN ASIDE-->
+                            <section class="col-main col-sm-9 col-xs-12 col-sm-push-3 wow">
+                                <div class="category-products">
+                                    <div class="toolbar">
+                                        <div class="sorter">
+                                            <div class="view-mode"> <span title="Grid" class="button button-active button-grid">Grid</span><h:link outcome="list" title="List" class="button button-list">List</h:link> </div>
+                                        </div>
+                                        <div id="sort-by">
+                                            <label class="left">Sort By: </label>
+                                            <ul>
+                                                <li><a href="#">Position<span class="right-arrow"></span></a>
+                                                    <ul>
+                                                        <li><a href="#">Name</a></li>
+                                                        <li><a href="#">Price</a></li>
+                                                        <li><a href="#">Position</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                            <a class="button-asc left" href="#" title="Set Descending Direction"><span style="color:#999;font-size:11px;" class="glyphicon glyphicon-arrow-up"></span></a> </div>
+                                        <div class="pager">
+                                            <div id="limiter">
+                                                <label>View: </label>
+                                                <ul>
+                                                    <li><a href="#">15<span class="right-arrow"></span></a>
+                                                        <ul>
+                                                            <li><a href="#">20</a></li>
+                                                            <li><a href="#">30</a></li>
+                                                            <li><a href="#">35</a></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="pages">
+                                                <label>Page:</label>
+                                                <ul class="pagination">
+                                                    <li><a href="#">&laquo;</a></li>
+                                                    <li class="active"><a href="#">1</a></li>
+                                                    <li><a href="#">2</a></li>
+                                                    <li><a href="#">3</a></li>
+                                                    <li><a href="#">4</a></li>
+                                                    <li><a href="#">5</a></li>
+                                                    <li><a href="#">&raquo;</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--Show Products-->
+                                    <c:forEach var="p" items="#{productController.listAll()}">
+                                        <ul class="products-grid">
+                                            <li class="item col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                                                <div class="col-item">
+                                                    <c:if test="#{p.prodQuantity > 0}" >
+                                                        <div class="new-label new-top-right">Sale</div>
+                                                    </c:if>
+                                                    <c:if test="#{p.prodQuantity == 0}" >
+                                                        <div class="sale-label sale-top-left">Out of stock</div>
+                                                    </c:if>
+
+                                                    <div class="images-container"> 
+                                                        <h:commandLink class="product-image" title="#{p.prodName}" action="#{productController.productDetail(p)}">
+                                                            <h:graphicImage name="client/products-images/#{productImageController.getImageByProdId(p.prodId)}" class="img-responsive" alt="a"/> 
+                                                        </h:commandLink>
+
+                                                        <div class="actions">
+                                                            <div class="actions-inner">
+                                                                <c:if test="#{p.prodQuantity > 0}" >
+                                                                    <ul class="add-to-links">
+                                                                    <h:inputHidden value="#{userController.setTarget('grid')}" />
+                                                                    <h:commandLink class="button btn-cart" action="shopping_cart_grid?faces-redirect=true">
+                                                                        <span>Add to Cart</span>
+                                                                        <f:ajax listener="#{cartController.addItemToCart(p.prodId, p.prodName, p.prodPrice)}" render="cart-total" />
+
+                                                                    </h:commandLink>
+                                                                    </ul>
+                                                                </c:if>
+                                                                <c:if test="#{p.prodQuantity == 0}" >
+                                                                    <ul class="add-to-links">
+                                                                    
+                                                                    </ul>
+                                                                </c:if>
+                                                                <c:if test="#{cus_loged != null}">
+                                                                <ul class="add-to-links">
+                                                                    
+                                                                    <li>
+                                                                        <h:commandLink title="Add to Wishlist" class="link-wishlist" action="wishlist?faces-redirect=true">
+                                                                            <span>Add to Wishlist</span>
+                                                                            <f:ajax listener="#{wishlistController.addItemWishList(p.prodId, p.prodName, p.prodPrice)}" />
+                                                                        </h:commandLink>
+                                                                        
+                                                                    </li>
+                                                                    <li></li>
+                                                                </ul>
+                                                                </c:if>
+                                                            </div>
+                                                        </div>
+                                                        <div class="qv-button-container">
+                                                            <h:commandLink title="View details" action="#{productController.productDetail(p)}">
+                                                                <span><span>View details</span></span>
+                                                            </h:commandLink> 
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="info">
+                                                        <div class="info-inner">
+                                                            <div class="item-title"> <h:link title=" #{p.prodName}" outcome="product_detail?faces-redirect=true"> #{p.prodName} </h:link> </div>
+                                                            <!--item-title-->
+                                                            <div class="item-content">
+                                                                <div class="ratings">
+                                                                    <div class="rating-box">
+                                                                        <div style="width:60%" class="rating"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="price-box">
+                                                                    <p class="special-price"> <span class="price"> $#{p.prodPrice} </span> </p>
+                                                                    <p class="old-price"> <span class="price-sep">-</span> <span class="price"> $#{p.prodOldprice} </span> </p>
+                                                                </div>
+                                                            </div>
+                                                            <!--item-content--> 
+                                                        </div>
+                                                        <!--info-inner--> 
+
+                                                        <!--actions-->
+
+                                                        <div class="clearfix"> </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                           
+                                        </ul>
+
+                                    </c:forEach>
+                                </div>
+                            </section>
+                            <!--END MAIN ASIDE-->
+
+                            <!--LEFT ASIDE-->
+                            <ui:include src="./templates/_leftaside.xhtml"/>
+                            <!--END LEFT ASIDE-->
+
+                        </div>
+                    </div>
+                </section>
+                </h:form>
+                <!-- END GRID-PRODUCTS -->
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,241 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:decorate template="./templates/adminTemplate.xhtml">
+
+            <ui:param name="breadcrumb_title" value="Dashboard"/>
+
+            <ui:param name="active_dashboard_menu" value="active"/>
+
+            <ui:define name="content">
+                <div class="page-content">
+                    <div id="tab-general">
+                        <div class="row mbl">
+                            <div class="col-lg-12">
+                                <h:form>
+                                    <div id="Message" style="display: block">
+                                        <h:messages globalOnly="true" 
+                                                    style="display: block; font-size: 11pt; font-style: italic; background:#F00; color: #FFF;"/>
+                                    </div>
+
+
+                                    <div class="panel panel-blue" style="background:#FFF;">
+                                        <div class="panel-heading">
+                                            <h3 style="color: white">Transactions list</h3>
+                                            <ul class="nav nav-tabs">
+                                                <li class="active"><a href="#tab-pending" data-toggle="tab">PENDING</a></li>
+                                                <li><a href="#tab-delivered" data-toggle="tab">DELIVERED</a></li>
+                                                <li><a href="#tab-all" data-toggle="tab">ALL</a></li>
+                                            </ul>
+                                        </div>
+
+                                        <div id="generalTabContent" class="tab-content">
+
+                                            <!--Tab PENDING-->
+                                            <div id="tab-pending" class="tab-pane fade in active">
+                                                <div class="panel-body table table-responsive">
+                                                    <table class="table table-hover table-bordered">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>#</th>
+                                                                <th>Email</th>
+                                                                <th>Created Date</th>
+                                                                <th>Delivery Address</th>
+                                                                <th>Delivery Date</th>
+                                                                <th>Total Bill</th>
+                                                                <th>Status</th>
+                                                                <th>Action</th>
+                                                            </tr>
+                                                        </thead>
+
+                                                        <tbody>
+                                                            <c:forEach var="t" items="#{transactionsController.listAll('pending')}">
+                                                                <tr>
+                                                                    <td>#{t.tranId}</td>
+                                                                    <td>#{t.userId.userEmail}</td>
+
+                                                                    <td>
+                                                                        <h:outputText value="#{t.tranCreatedDate}" >
+                                                                            <f:convertDateTime type="datetime" pattern="dd/MM/yyyy" timeZone="Asia/Ho_Chi_Minh"/>
+                                                                        </h:outputText>
+                                                                    </td>
+                                                                    <td>#{t.tranDeliveryAddress}</td>
+                                                                    <td>
+                                                                        <h:outputText value="#{t.tranDeliveryDate}">
+                                                                            <f:convertDateTime type="datetime" pattern="dd/MM/yyyy" timeZone="Asia/Ho_Chi_Minh"/>
+                                                                        </h:outputText>
+                                                                    </td>
+                                                                    <td>#{t.tranTotal}</td>
+                                                                    <td>
+                                                                        <c:if test="#{t.tranStatus == 'pending'}">
+                                                                            <span class="label label-sm label-danger">#{t.tranStatus} </span>
+                                                                        </c:if>
+                                                                        <c:if test="#{t.tranStatus == 'delivered'}">
+                                                                            <span class="label label-sm label-success">#{t.tranStatus} </span>
+                                                                        </c:if>
+                                                                    </td>
+
+                                                                    <td>
+                                                                        <h:commandLink title="Delivery" action="#{transactionsController.setDelivered(t)}" class="btn btn-primary">
+                                                                            <span class="fa fa-truck" style="font-size: large"></span>
+                                                                        </h:commandLink>
+                                                                        &nbsp;
+                                                                        <h:commandLink title="View" action="#{transactionsController.viewBilling(t)}" class="btn btn-green">
+                                                                            <span class="fa fa-eye" style="font-size: large"></span>
+                                                                        </h:commandLink>
+                                                                    </td>
+                                                                </tr>
+                                                                
+                                                                
+                                                            </c:forEach>
+                                                        </tbody>
+                                                        <tfoot>
+                                                            <tr>
+
+                                                            </tr>
+                                                        </tfoot>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <!--END Tab PENDING-->
+
+                                            <!--Tab DELIVERED-->
+                                            <div id="tab-delivered" class="tab-pane fade in">
+                                                <div class="panel-body table table-responsive">
+                                                    <table class="table table-hover table-bordered">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>#</th>
+                                                                <th>Email</th>
+                                                                <th>Created Date</th>
+                                                                <th>Delivery Address</th>
+                                                                <th>Delivery Date</th>
+                                                                <th>Total Bill</th>
+                                                                <th>Status</th>
+                                                                <!--<th>Action</th>-->
+                                                            </tr>
+                                                        </thead>
+
+                                                        <tbody>
+                                                            <c:forEach var="t" items="#{transactionsController.listAll('delivered')}">
+                                                                <tr>
+                                                                    <td>#{t.tranId}</td>
+                                                                    <td>#{t.userId.userEmail}</td>
+
+                                                                    <td>
+                                                                        <h:outputText value="#{t.tranCreatedDate}" >
+                                                                            <f:convertDateTime type="datetime" pattern="dd/MM/yyyy" timeZone="Asia/Ho_Chi_Minh"/>
+                                                                        </h:outputText>
+                                                                    </td>
+                                                                    <td>#{t.tranDeliveryAddress}</td>
+                                                                    <td>
+                                                                        <h:outputText value="#{t.tranDeliveryDate}">
+                                                                            <f:convertDateTime type="datetime" pattern="dd/MM/yyyy" timeZone="Asia/Ho_Chi_Minh"/>
+                                                                        </h:outputText>
+                                                                    </td>
+                                                                    <td>#{t.tranTotal}</td>
+                                                                    <td>
+                                                                        <c:if test="#{t.tranStatus == 'pending'}">
+                                                                            <span class="label label-sm label-danger">#{t.tranStatus} </span>
+                                                                        </c:if>
+                                                                        <c:if test="#{t.tranStatus == 'delivered'}">
+                                                                            <span class="label label-sm label-success">#{t.tranStatus} </span>
+                                                                        </c:if>
+                                                                    </td>
+
+<!--                                                                    <td>
+                                                                        <h:commandLink title="Delivery" action="#{productController.edit(p)}" class="btn btn-primary">
+                                                                            <span class="fa fa-truck" style="font-size: large"></span>
+                                                                        </h:commandLink>
+                                                                    </td>-->
+                                                                </tr>
+                                                            </c:forEach>
+                                                        </tbody>
+                                                        
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <!--END Tab DELIVERED-->
+
+                                            <!--Tab ALL-->
+                                            <div id="tab-all" class="tab-pane fade in">
+                                                <div class="panel-body table table-responsive">
+                                                    <table class="table table-hover table-bordered">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>#</th>
+                                                                <th>Email</th>
+                                                                <th>Created Date</th>
+                                                                <th>Delivery Address</th>
+                                                                <th>Delivery Date</th>
+                                                                <th>Total Bill</th>
+                                                                <th>Status</th>
+                                                                <!--<th>Action</th>-->
+                                                            </tr>
+                                                        </thead>
+
+                                                        <tbody>
+                                                            <c:forEach var="t" items="#{transactionsController.listAll('all')}">
+
+
+                                                                <tr>
+                                                                    <td>#{t.tranId}</td>
+                                                                    <td>#{t.userId.userEmail}</td>
+
+                                                                    <td>
+                                                                        <h:outputText value="#{t.tranCreatedDate}" >
+                                                                            <f:convertDateTime type="datetime" pattern="dd/MM/yyyy" timeZone="Asia/Ho_Chi_Minh"/>
+                                                                        </h:outputText>
+                                                                    </td>
+                                                                    <td>#{t.tranDeliveryAddress}</td>
+                                                                    <td>
+                                                                        <h:outputText value="#{t.tranDeliveryDate}">
+                                                                            <f:convertDateTime type="datetime" pattern="dd/MM/yyyy" timeZone="Asia/Ho_Chi_Minh"/>
+                                                                        </h:outputText>
+                                                                    </td>
+                                                                    <td>#{t.tranTotal}</td>
+                                                                    <td>
+                                                                        <c:if test="#{t.tranStatus == 'pending'}">
+                                                                            <span class="label label-sm label-danger">#{t.tranStatus} </span>
+                                                                        </c:if>
+                                                                        <c:if test="#{t.tranStatus == 'delivered'}">
+                                                                            <span class="label label-sm label-success">#{t.tranStatus} </span>
+                                                                        </c:if>
+                                                                    </td>
+
+<!--                                                                    <td>
+                                                                        <h:commandLink title="Delivery" action="#{productController.edit(p)}" class="btn btn-primary">
+                                                                            <span class="fa fa-truck" style="font-size: large"></span>
+                                                                        </h:commandLink>
+                                                                    </td>-->
+                                                                </tr>
+                                                            </c:forEach>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <!--END Tab ALL-->
+                                        </div>
+
+                                    </div>
+                                </h:form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </ui:define>
+
+        </ui:decorate>>
+
+    </body>
+</html>
